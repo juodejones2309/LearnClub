@@ -12,6 +12,7 @@ import com.google.firebase.auth.*
 import com.google.firebase.database.FirebaseDatabase
 import com.rcappstudios.qualityeducation.databinding.ActivityOtpBinding
 import com.rcappstudios.qualityeducation.model.StudentData
+import com.rcappstudios.qualityeducation.utils.Constants
 import java.util.concurrent.TimeUnit
 
 class OtpActivity : AppCompatActivity() {
@@ -117,6 +118,12 @@ class OtpActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 if(it.exists()){
                     //TODO: store grade of the student
+                    val student = it.getValue(StudentData::class.java)
+                    getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
+                        .edit()
+                        .putString(Constants.NAME, student!!.name)
+                        .putString(Constants.GRADE, student.grade.toString())
+                        .apply()
                     startActivity(Intent(this, MainActivity::class.java))
                     Toast.makeText(this, "Verified Successfully", Toast.LENGTH_LONG).show()
                     finish()
@@ -137,6 +144,11 @@ class OtpActivity : AppCompatActivity() {
                 .setValue(StudentData(binding.etName.text.toString(), binding.etGrade.text.toString(), phoneNumber))
                 .addOnSuccessListener {
                     //TODO: store grade of the student
+                    getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
+                        .edit()
+                        .putString(Constants.NAME, binding.etName.text.toString())
+                        .putString(Constants.GRADE, binding.etGrade.text.toString())
+                        .apply()
                     startActivity(Intent(this, MainActivity::class.java))
                     Toast.makeText(this, "Verified Successfully", Toast.LENGTH_LONG).show()
                     finish()

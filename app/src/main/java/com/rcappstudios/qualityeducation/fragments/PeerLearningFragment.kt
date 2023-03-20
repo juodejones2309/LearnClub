@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.StudentRoomActivity
+import com.rcappstudios.qualityeducation.adapters.PeerLearningAdapter
 import com.rcappstudios.qualityeducation.databinding.FragmentPeerLearningBinding
 import com.rcappstudios.qualityeducation.model.JoinRoomModel
 import com.rcappstudios.qualityeducation.model.RoomModel
@@ -24,31 +26,35 @@ class PeerLearningFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentPeerLearningBinding.inflate(layoutInflater)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val key = FirebaseDatabase.getInstance().reference.push().key
-        /*FirebaseDatabase.getInstance().getReference("Room/$key")
-            .setValue(
-                RoomModel(
-                    hostID = FirebaseAuth.getInstance().uid,
-                    topicName = "Social Environment",
-                    timeStamp = Calendar.getInstance().timeInMillis,
-                    creatorName = "Hari Haran R C",
-                    roomID = key
-                )
-            )*/
+        getRoomList()
         clickListener()
     }
 
     private fun clickListener(){
-        binding.joinRoom.setOnClickListener {
-            initJoinRoom()
-        }
+    }
+    private fun getRoomList(){
+        FirebaseDatabase.getInstance().getReference("Room")
+            .get().addOnSuccessListener {
+                if(it.exists()){
+                    val roomList = mutableListOf<RoomModel>()
+                    for(c in it.children){
+                        roomList.add(c.getValue(RoomModel::class.java)!!)
+                    }
+                    initRv(roomList)
+                }
+            }
+    }
+    private fun initRv(roomList: MutableList<RoomModel>){
+        binding.rvPeer.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvPeer.adapter =
+            PeerLearningAdapter(requireContext(), roomList){int, room->
+
+            }
     }
 
     private fun initJoinRoom(){
