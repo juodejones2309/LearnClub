@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/askDoubtFragment">
+
+    <fragment
+        android:id="@+id/askDoubtFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.AskDoubtFragment"
+        android:label="fragment_ask_doubt"
+        tools:layout="@layout/fragment_ask_doubt" >
+        <action
+            android:id="@+id/action_askDoubtFragment_to_commentsFragment"
+            app:destination="@id/commentsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_in_left" />
+        <argument
+            android:name="questionID"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/peerLearningFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.PeerLearningFragment"
+        android:label="fragment_peer_learning"
+        tools:layout="@layout/fragment_peer_learning" />
+    <fragment
+        android:id="@+id/postQuestionFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.PostQuestionFragment"
+        android:label="fragment_post_question"
+        tools:layout="@layout/fragment_post_question" />
+    <fragment
+        android:id="@+id/commentsFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.CommentsFragment"
+        android:label="fragment_comments"
+        tools:layout="@layout/fragment_comments"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_in_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_in_right"
+        >
+        <argument
+            android:name="questionID"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+</navigation>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1075232306019",
+    "project_id": "qualityeducation-96caa",
+    "storage_bucket": "qualityeducation-96caa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075232306019:android:213d8b7bb924d41a289956",
+        "android_client_info": {
+          "package_name": "com.rcappstudios.qualityeducation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1075232306019-r4ruq2s9f2sbaq0dk7uhd498ovefhk2n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzYhUEoK2AxjPydCQiifdVIYvDlD-MvXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1075232306019-r4ruq2s9f2sbaq0dk7uhd498ovefhk2n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
