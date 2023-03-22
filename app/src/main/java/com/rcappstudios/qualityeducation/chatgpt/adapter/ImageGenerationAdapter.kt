@@ -1,4 +1,4 @@
-package com.zero.chatgpt_androidapp.adapter
+package com.rcappstudios.qualityeducation.chatgpt.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,20 +7,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.makeramen.roundedimageview.RoundedImageView
-import com.squareup.picasso.Picasso
 import com.rcappstudios.qualityeducation.R
-import com.zero.chatgpt_androidapp.adapter.model.CompletionAdapterModel
-import com.zero.chatgpt_androidapp.adapter.model.ImageGenerationAdapterModel
+import com.squareup.picasso.Picasso
+import com.rcappstudios.qualityeducation.chatgpt.adapter.model.ImageGenerationAdapterModel
 
 class ImageGenerationAdapter(
     private val context: Context,
     private var imageGenerationList: MutableList<ImageGenerationAdapterModel>
-): RecyclerView.Adapter<ImageGenerationAdapter.ViewHolder> (){
+) : RecyclerView.Adapter<ImageGenerationAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view){
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ivBot = view.findViewById<RoundedImageView>(R.id.ivBot)
         val textBot = view.findViewById<TextView>(R.id.botText)
-        val header  = view.findViewById<TextView>(R.id.header)
+        val header = view.findViewById<TextView>(R.id.header)
         val ivGenerated = view.findViewById<RoundedImageView>(R.id.ivGenerated)
     }
 
@@ -33,18 +32,18 @@ class ImageGenerationAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val imageGenerationData = imageGenerationList[position]
-        if(imageGenerationData.isBot){
+        if (imageGenerationData.isBot) {
             holder.textBot.visibility = View.GONE
             holder.ivGenerated.visibility = View.VISIBLE
             holder.ivBot.setImageResource(R.drawable.chat_gpt_logo)
             holder.header.text = "Bot"
-            if(imageGenerationData.url != null && imageGenerationData.url != ""){
+            if (imageGenerationData.url != null && imageGenerationData.url != "") {
                 Picasso.get()
                     .load(imageGenerationData.url)
                     .fit().centerInside()
                     .into(holder.ivGenerated)
             }
-        } else{
+        } else {
             holder.textBot.visibility = View.VISIBLE
             holder.textBot.text = imageGenerationData.url
             holder.ivGenerated.visibility = View.GONE
@@ -52,7 +51,7 @@ class ImageGenerationAdapter(
             holder.header.text = "You"
         }
 
-        if(imageGenerationList.size == 1){
+        if (imageGenerationList.size == 1) {
             holder.textBot.visibility = View.VISIBLE
             holder.ivGenerated.visibility = View.GONE
             holder.textBot.text = imageGenerationData.url
@@ -60,7 +59,7 @@ class ImageGenerationAdapter(
 
     }
 
-    fun addImageGeneratedData(imageGenerationData: ImageGenerationAdapterModel){
+    fun addImageGeneratedData(imageGenerationData: ImageGenerationAdapterModel) {
         imageGenerationList.add(imageGenerationData)
         notifyDataSetChanged()
     }

@@ -1,8 +1,8 @@
-package com.zero.chatgpt_androidapp.di
+package com.rcappstudios.qualityeducation.chatgpt.di
 
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.zero.chatgpt_androidapp.data.completion.api.CompletionAPIService
+import com.rcappstudios.qualityeducation.chatgpt.completion.api.CompletionAPIService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

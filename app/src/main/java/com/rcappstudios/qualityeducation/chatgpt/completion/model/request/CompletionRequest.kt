@@ -1,4 +1,4 @@
-package com.zero.chatgpt_androidapp.data.completion.model.request
+package com.rcappstudios.qualityeducation.chatgpt.completion.model.request
 
 
 import com.google.gson.annotations.SerializedName

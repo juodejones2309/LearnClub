@@ -18,7 +18,7 @@
 
 
     <application
-        android:name="com.zero.chatgpt_androidapp.App"
+        android:name="com.rcappstudios.qualityeducation.chatgpt.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -45,7 +45,7 @@
             android:name=".MainActivity"
             android:exported="false"/>
         <activity
-            android:name="com.zero.chatgpt_androidapp.ui.ChatGptActivity"
+            android:name="com.rcappstudios.qualityeducation.chatgpt.ui.ChatGptActivity"
             android:exported="false"/>
     </application>
 

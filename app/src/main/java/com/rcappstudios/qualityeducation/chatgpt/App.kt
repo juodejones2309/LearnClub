@@ -1,4 +1,4 @@
-package com.zero.chatgpt_androidapp
+package com.rcappstudios.qualityeducation.chatgpt
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

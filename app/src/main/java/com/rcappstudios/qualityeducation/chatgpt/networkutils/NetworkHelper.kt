@@ -1,4 +1,4 @@
-package com.zero.chatgpt_androidapp.networkutils
+package com.rcappstudios.qualityeducation.chatgpt.networkutils
 
 import android.util.Log
 import kotlinx.coroutines.CoroutineDispatcher

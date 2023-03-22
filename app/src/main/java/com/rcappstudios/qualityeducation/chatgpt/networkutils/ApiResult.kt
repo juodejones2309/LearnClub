@@ -1,4 +1,4 @@
-package com.zero.chatgpt_androidapp.networkutils
+package com.rcappstudios.qualityeducation.chatgpt.networkutils
 
 sealed class ApiResult <out T> {
 

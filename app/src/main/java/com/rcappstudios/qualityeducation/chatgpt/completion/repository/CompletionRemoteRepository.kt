@@ -1,6 +1,6 @@
-package com.zero.chatgpt_androidapp.data.completion.repository
+package com.rcappstudios.qualityeducation.chatgpt.completion.repository
 
-import com.zero.chatgpt_androidapp.data.completion.datasource.CompletionRemoteDataSource
+import com.rcappstudios.qualityeducation.chatgpt.completion.datasource.CompletionRemoteDataSource
 
 class CompletionRemoteRepository (private val completionRemoteDataSource: CompletionRemoteDataSource):
     CompletionRemoteDataSource by completionRemoteDataSource

@@ -1,11 +1,10 @@
-package com.zero.chatgpt_androidapp.data.completion.datasource
+package com.rcappstudios.qualityeducation.chatgpt.completion.datasource
 
 import androidx.lifecycle.LiveData
-import com.zero.chatgpt_androidapp.data.completion.model.image.request.ImageGenerationRequest
-import com.zero.chatgpt_androidapp.data.completion.model.image.response.ImageGenerationResponse
-import com.zero.chatgpt_androidapp.data.completion.model.response.CompletionResponse
-import com.zero.chatgpt_androidapp.data.completion.model.request.CompletionRequest
-import kotlinx.coroutines.flow.Flow
+import com.rcappstudios.qualityeducation.chatgpt.completion.model.image.request.ImageGenerationRequest
+import com.rcappstudios.qualityeducation.chatgpt.completion.model.image.response.ImageGenerationResponse
+import com.rcappstudios.qualityeducation.chatgpt.completion.model.response.CompletionResponse
+import com.rcappstudios.qualityeducation.chatgpt.completion.model.request.CompletionRequest
 
 interface CompletionRemoteDataSource {
 

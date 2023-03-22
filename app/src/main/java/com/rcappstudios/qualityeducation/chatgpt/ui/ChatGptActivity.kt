@@ -1,4 +1,4 @@
-package com.zero.chatgpt_androidapp.ui
+package com.rcappstudios.qualityeducation.chatgpt.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -11,7 +11,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.databinding.FragmentSelectSubjectBinding
-import com.zero.chatgpt_androidapp.ui.ChatGptActivity
+import com.rcappstudios.qualityeducation.chatgpt.ui.ChatGptActivity
 
 class SelectSubjectFragment : Fragment() {
 

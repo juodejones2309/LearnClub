@@ -1,9 +1,9 @@
-package com.zero.chatgpt_androidapp.data.completion.api
+package com.rcappstudios.qualityeducation.chatgpt.completion.api
 
-import com.zero.chatgpt_androidapp.data.completion.model.image.request.ImageGenerationRequest
-import com.zero.chatgpt_androidapp.data.completion.model.image.response.ImageGenerationResponse
-import com.zero.chatgpt_androidapp.data.completion.model.response.CompletionResponse
-import com.zero.chatgpt_androidapp.data.completion.model.request.CompletionRequest
+import com.rcappstudios.qualityeducation.chatgpt.completion.model.image.request.ImageGenerationRequest
+import com.rcappstudios.qualityeducation.chatgpt.completion.model.image.response.ImageGenerationResponse
+import com.rcappstudios.qualityeducation.chatgpt.completion.model.response.CompletionResponse
+import com.rcappstudios.qualityeducation.chatgpt.completion.model.request.CompletionRequest
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
