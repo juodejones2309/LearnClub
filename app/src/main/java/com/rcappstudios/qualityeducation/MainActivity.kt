@@ -16,11 +16,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+//        supportActionBar!!.hide()
         setContentView(binding.root)
-        setUpNavigationComponent()
+//        setUpNavigationComponent()
     }
 
-    private fun setUpNavigationComponent(){
+    /*private fun setUpNavigationComponent(){
         toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -37,5 +38,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun getNavController(): NavController {
         return (supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment).navController
-    }
+    }*/
+
 }

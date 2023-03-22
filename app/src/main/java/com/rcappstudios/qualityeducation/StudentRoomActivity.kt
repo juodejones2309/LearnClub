@@ -37,26 +37,26 @@ class StudentRoomActivity : AppCompatActivity() {
     private var agoraEngine: RtcEngine? = null
 
     // UI elements
-    private var infoText: TextView? = null
-    private var joinLeaveButton: Button? = null
+//    private var infoText: TextView? = null
+//    private var joinLeaveButton: Button? = null
 
     private val mRtcEventHandler: IRtcEngineEventHandler = object : IRtcEngineEventHandler() {
         override fun onUserJoined(uid: Int, elapsed: Int) {
-            runOnUiThread { infoText!!.text = "Remote user joined: $uid" }
+//            runOnUiThread { infoText!!.text = "Remote user joined: $uid" }
         }
         override fun onJoinChannelSuccess(channel: String, uid: Int, elapsed: Int) {
             isJoined = true
             showMessage("Joined Channel $channel")
-            runOnUiThread { infoText!!.text = "Waiting for a remote user to join" }
+//            runOnUiThread { infoText!!.text = "Waiting for a remote user to join" }
         }
 
         override fun onUserOffline(uid: Int, reason: Int) {
             showMessage("Remote user offline $uid $reason")
-            if (isJoined) runOnUiThread { infoText!!.text = "Waiting for a remote user to join" }
+//            if (isJoined) runOnUiThread { infoText!!.text = "Waiting for a remote user to join" }
         }
 
         override fun onLeaveChannel(stats: RtcStats) {
-            runOnUiThread { infoText!!.text = "Press the button to join a channel" }
+//            runOnUiThread { infoText!!.text = "Press the button to join a channel" }
             isJoined = false
         }
     }
@@ -76,8 +76,8 @@ class StudentRoomActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, REQUESTED_PERMISSIONS, PERMISSION_REQ_ID);
         }
         setupVoiceSDKEngine();
-        joinLeaveButton = findViewById(R.id.joinLeaveButton);
-        infoText = findViewById(R.id.infoText);
+//        joinLeaveButton = findViewById(R.id.joinLeaveButton);
+//        infoText = findViewById(R.id.infoText);
     }
 
     private fun setupVoiceSDKEngine() {
@@ -105,10 +105,10 @@ class StudentRoomActivity : AppCompatActivity() {
         //TODO: Change th status of the mic button
         if (isJoined) {
             agoraEngine!!.leaveChannel()
-            joinLeaveButton!!.text = "Join"
+//            joinLeaveButton!!.text = "Join"
         } else {
             joinChannel()
-            joinLeaveButton!!.text = "Leave"
+//            joinLeaveButton!!.text = "Leave"
         }
     }
 

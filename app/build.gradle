@@ -84,4 +84,7 @@ dependencies {
     //Agora voice SDK
     implementation 'io.agora.rtc:voice-sdk:4.0.0.4'
 
+    //Smooth app bar
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
+
 }

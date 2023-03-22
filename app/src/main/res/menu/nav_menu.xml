@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item android:id="@+id/askDoubtFragment"
-        android:title="Ask Doubts"
-        android:icon="@drawable/baseline_question_mark_24"/>
+        android:title=""
+        android:icon="@drawable/baseline_draw_24"/>
 
     <item android:id="@+id/peerLearningFragment"
-        android:title="Peer learning"
-        android:icon="@drawable/baseline_question_mark_24"/>
+        android:title=""
+        android:icon="@drawable/baseline_chat_24"/>
+
+    <item
+        android:title=""
+        android:icon="@drawable/baseline_live_tv_24"/>
 
 </menu>

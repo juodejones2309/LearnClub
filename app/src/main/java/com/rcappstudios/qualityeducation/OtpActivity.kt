@@ -117,7 +117,6 @@ class OtpActivity : AppCompatActivity() {
             .get()
             .addOnSuccessListener {
                 if(it.exists()){
-                    //TODO: store grade of the student
                     val student = it.getValue(StudentData::class.java)
                     getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
                         .edit()
@@ -143,7 +142,6 @@ class OtpActivity : AppCompatActivity() {
             FirebaseDatabase.getInstance().getReference("Students/${FirebaseAuth.getInstance().uid}")
                 .setValue(StudentData(binding.etName.text.toString(), binding.etGrade.text.toString(), phoneNumber))
                 .addOnSuccessListener {
-                    //TODO: store grade of the student
                     getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
                         .edit()
                         .putString(Constants.NAME, binding.etName.text.toString())
