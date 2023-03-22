@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/completion"
+        android:icon="@drawable/baseline_chat_bubble_24"
+        android:title="Chat bot"
+        app:cnb_iconColor="#00A67E"/>
+
+    <item
+        android:id="@+id/ivGenerator"
+        android:icon="@drawable/baseline_image_24"
+        android:title="Image generator"
+        app:cnb_iconColor="#00A67E"/>
+
+</menu>

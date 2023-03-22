@@ -1,5 +1,6 @@
 package com.rcappstudios.qualityeducation.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.databinding.FragmentSelectSubjectBinding
+import com.zero.chatgpt_androidapp.ui.ChatGptActivity
 
 class SelectSubjectFragment : Fragment() {
 
@@ -36,6 +38,11 @@ class SelectSubjectFragment : Fragment() {
                     .actionSelectSubjectFragmentToSubjectDetailFragment
                         ("subject_name"),
                 R.id.subjectDetailFragment)
+        }
+
+        binding.chatGptBt.setOnClickListener {
+            var intent = Intent(requireActivity(), ChatGptActivity::class.java)
+            requireActivity().startActivity(intent)
         }
     }
 

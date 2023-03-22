@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/gpt_grey"
+    tools:context=".ui.imagegenerator.ImageGeneratorFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Ask question"
+        app:titleTextColor="@color/gpt_green"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_bot"
+        android:layout_below="@id/toolBar"
+        android:layout_above="@+id/questionLL"
+        />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/questionLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        >
+        <EditText
+            android:id="@+id/etQuestion"
+            android:layout_width="wrap_content"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:hint="Ask your question....."
+            android:textColorHint="@color/gpt_green"
+            android:layout_margin="@dimen/_5sdp"
+            android:textColor="@color/gpt_green"
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/background_edit_text"
+            android:layout_alignParentBottom="true"/>
+
+        <Button
+            android:id="@+id/btnAsk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ask"
+            android:backgroundTint="@color/gpt_green"
+            android:background="@drawable/round_button"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_weight=".05"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</RelativeLayout>

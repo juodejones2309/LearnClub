@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/completionFragment">
+
+    <fragment
+        android:id="@+id/completionFragment"
+        android:name="com.zero.chatgpt_androidapp.ui.completion.CompletionFragment"
+        android:label="fragment_completion"
+        tools:layout="@layout/fragment_completion" />
+    <fragment
+        android:id="@+id/imageGeneratorFragment"
+        android:name="com.zero.chatgpt_androidapp.ui.imagegenerator.ImageGeneratorFragment"
+        android:label="fragment_image_generator"
+        tools:layout="@layout/fragment_image_generator" />
+</navigation>
