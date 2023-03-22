@@ -57,19 +57,20 @@ class PeerLearningFragment : Fragment() {
         binding.rvPeer.adapter =
             PeerLearningAdapter(requireContext(), roomList){int, room->
                 //TODO: Confirmation dialog should be appeared
-                initJoinRoom(room.roomID.toString())
+                initJoinRoom(room.roomID.toString(), room.hostID.toString())
             }
     }
 
-    private fun navigateToStudentRoomActivity(roomId: String){
+    private fun navigateToStudentRoomActivity(roomId: String, hostID: String){
         //TODO: Add correct subjects
         val intent = Intent(requireContext(), StudentRoomActivity::class.java)
         intent.putExtra("Subject", "social")
+        intent.putExtra("hostID",hostID )
         intent.putExtra("RoomId", roomId)
         startActivity(intent)
     }
 
-    private fun initJoinRoom(roomId: String){
+    private fun initJoinRoom(roomId: String, hostID: String){
         // For Testing
         FirebaseDatabase.getInstance().getReference("Room/${roomId}/mates/${FirebaseAuth.getInstance().uid}")
             .setValue(
@@ -81,7 +82,7 @@ class PeerLearningFragment : Fragment() {
                     userImage = "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
                 )
             ).addOnSuccessListener {
-                navigateToStudentRoomActivity(roomId)
+                navigateToStudentRoomActivity(roomId, hostID)
             }
     }
 

@@ -19,4 +19,9 @@
         android:name="com.rcappstudios.qualityeducation.fragments.RoomVideoStreamFragment"
         android:label="fragment_room_video_stream"
         tools:layout="@layout/fragment_room_video_stream" />
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.VideoFragment"
+        android:label="fragment_video"
+        tools:layout="@layout/fragment_video" />
 </navigation>

@@ -3,7 +3,7 @@ package com.zero.chatgpt_androidapp.data.completion.datasourceimpl
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.zero.chatgpt_androidapp.networkutils.ApiResult
+import com.rcappstudios.qualityeducation.chatgpt.networkutils.ApiResult
 import com.zero.chatgpt_androidapp.data.completion.api.CompletionAPIService
 import com.zero.chatgpt_androidapp.data.completion.datasource.CompletionRemoteDataSource
 import com.zero.chatgpt_androidapp.data.completion.model.image.request.ImageGenerationRequest
@@ -12,8 +12,6 @@ import com.zero.chatgpt_androidapp.data.completion.model.response.CompletionResp
 import com.zero.chatgpt_androidapp.data.completion.model.request.CompletionRequest
 import com.zero.chatgpt_androidapp.networkutils.safeApiCall
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 
 class CompletionRemoteDataSourceImpl(
     private val completionAPIService: CompletionAPIService

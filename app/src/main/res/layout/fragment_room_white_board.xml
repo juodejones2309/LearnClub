@@ -20,17 +20,15 @@
         android:id="@+id/eraserButton"
         android:layout_width="@dimen/_30sdp"
         android:layout_height="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:layout_marginBottom="19dp"
-        app:layout_constraintBottom_toTopOf="@+id/paintView"
-        app:layout_constraintEnd_toStartOf="@+id/paintView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:sparkbutton_activeImage="@drawable/active_erraser"
         app:sparkbutton_animationSpeed="1.5"
         app:sparkbutton_iconSize="30dp"
         app:sparkbutton_inActiveImage="@drawable/inactive_erraser"
         app:sparkbutton_primaryColor="@color/purple_500"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         app:sparkbutton_secondaryColor="@color/purple_700" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

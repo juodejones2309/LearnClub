@@ -77,7 +77,10 @@ dependencies {
     implementation 'com.karumi:dexter:6.2.3'
 
     //Agora voice SDK
-    implementation 'io.agora.rtc:voice-sdk:4.0.0.4'
+//    implementation 'io.agora.rtc:voice-sdk:4.0.0.4'
+
+    //Agora video SDK
+    implementation 'io.agora.rtc:full-sdk:4.0.1'
 
     //Smooth app bar
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
@@ -115,6 +118,8 @@ dependencies {
     implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
 
     implementation 'com.github.varunest:sparkbutton:1.0.6'
+
+//    implementation 'com.github.AgoraIO-Community.VideoUIKit-Android:final:v4.0.1'
 }
 
 kapt {

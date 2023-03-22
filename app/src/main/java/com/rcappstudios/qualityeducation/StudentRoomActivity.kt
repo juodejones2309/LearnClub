@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.CompoundButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -38,13 +39,14 @@ class StudentRoomActivity : AppCompatActivity() {
     )
     private val appId = "a9c7eed08a8a4e4bba648e6e6e879163"
     private val channelName = "1"
-    private val token = "007eJxTYFilzW1b8Stc+C6TCn+vn4m21eaf21jYOY5+mZ59VGRSlYcCQ6JlsnlqaoqBRaJFokmqSVJSopmJRaoZEFqYWxqaGUsZiac0BDIymJ8uZGCEQhCfkcGQgQEA/+EaZg==="
+    private val token = "007eJxTYFi98MDyuG3iP25oa/F+7VQ1/JiYWxm2bF7v8e2+PTrHfJMUGBItk81TU1MMLBItEk1STZKSEs1MLFLNgNDC3NLQzPjLEamUhkBGhr/2k5kYGSAQxGdkMGRgAABTDR+S"
     private val uid = 0
     private var isJoined = false
     private var agoraEngine: RtcEngine? = null
 
     companion object{
         var roomID : String = ""
+        var hostID: String = ""
     }
 
 
@@ -80,8 +82,10 @@ class StudentRoomActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar!!.hide()
         init()
+
         setUpBottomNavigation()
         roomID = intent.getStringExtra("RoomId")!!
+        hostID = intent.getStringExtra("hostID")!!
         Log.d("RoomID", "onCreate:activity $roomID")
     }
     private fun init(){
@@ -90,8 +94,24 @@ class StudentRoomActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, REQUESTED_PERMISSIONS, PERMISSION_REQ_ID);
         }
         setupVoiceSDKEngine();
+        joinChannel()
 //        joinLeaveButton = findViewById(R.id.joinLeaveButton);
 //        infoText = findViewById(R.id.infoText);
+        binding.audioSwitch.isChecked = true
+
+        binding.audioSwitch.setOnCheckedChangeListener(object :CompoundButton.OnCheckedChangeListener{
+            override fun onCheckedChanged(p0: CompoundButton?, p1: Boolean) {
+                if(p1){
+                    agoraEngine!!.enableAudio()
+                    Toast.makeText(applicationContext, "Audio un muted", Toast.LENGTH_LONG).show()
+                } else{
+                    agoraEngine!!.disableAudio()
+                    Toast.makeText(applicationContext, "Audio muted", Toast.LENGTH_LONG).show()
+
+                }
+            }
+
+        })
     }
 
     private fun setupVoiceSDKEngine() {
@@ -122,7 +142,8 @@ class StudentRoomActivity : AppCompatActivity() {
                     switchToFragment(R.id.roomWhiteBoardFragment2)
                 }
                 R.id.roomVideoStream->{
-                    switchToFragment(R.id.roomVideoStreamFragment2)
+                    agoraEngine!!.leaveChannel()
+                    switchToFragment(R.id.videoFragment)
                 }
                 R.id.roomChat->{
                     switchToFragment(R.id.roomChatFragment2)

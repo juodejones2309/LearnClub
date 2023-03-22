@@ -1,4 +1,4 @@
-package com.zero.chatgpt_androidapp.di
+package com.rcappstudios.qualityeducation.chatgpt.di
 
 import com.zero.chatgpt_androidapp.data.completion.api.CompletionAPIService
 import com.zero.chatgpt_androidapp.data.completion.datasource.CompletionRemoteDataSource
