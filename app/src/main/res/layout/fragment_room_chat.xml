@@ -1,15 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+tools:context=".fragments.RoomChatFragment">
+
+
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/chatRecyclerView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".fragments.RoomChatFragment">
+    android:layout_height="wrap_content"
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    android:layout_above="@id/rlRoot"
+    />
 
-</FrameLayout>
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:id="@+id/rlRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/messageBox"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/background_edit_text"
+        android:hint="Enter message" />
+
+    <ImageView
+        android:id="@+id/sendMessage"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:background="@drawable/circle_bg"
+        android:contentDescription="sendMessage"
+        android:padding="@dimen/_8sdp"
+        android:src="@drawable/ic_send" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+</RelativeLayout>

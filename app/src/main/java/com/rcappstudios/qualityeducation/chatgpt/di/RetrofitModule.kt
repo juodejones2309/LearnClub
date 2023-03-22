@@ -22,7 +22,7 @@ class RetrofitModule {
     @Provides
     @Singleton
     fun providesOkHttpClient(): OkHttpClient{
-        val token = "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"
+        val token = "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"
         return OkHttpClient.Builder().addInterceptor(Interceptor { chain ->
             val newRequest: Request =
                 chain.request().newBuilder()
