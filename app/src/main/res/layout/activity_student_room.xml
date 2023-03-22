@@ -9,6 +9,7 @@
     tools:context=".StudentRoomActivity">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvIndicator"
         android:layout_width="match_parent"
         app:cardCornerRadius="@dimen/_20sdp"
         android:layout_margin="@dimen/_5sdp"
@@ -91,18 +92,26 @@
 <!--        android:onClick="joinLeaveChannel"-->
 <!--        android:text="Join" />-->
 
-    <me.ibrahimsn.lib.SmoothBottomBar
+    <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:backgroundColor="#585757"
-        app:indicatorColor="#939090"
-        app:sideMargins="0dp"
-        app:itemFontFamily="@font/mplus_rounded_1c_semibold"
+        android:layout_height="@dimen/_40sdp"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/nav_menu"/>
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:backgroundTint="@color/browser_actions_bg_grey"
+        android:hapticFeedbackEnabled="true"
+        app:cnb_menuResource="@menu/nav_menu" />
 
-
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView2"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        android:layout_below="@id/cvIndicator"
+        android:layout_above="@id/bottomBar"
+        app:navGraph="@navigation/nav_graph2" />
 
 
 </RelativeLayout>

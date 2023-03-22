@@ -6,12 +6,18 @@ import android.graphics.Paint.Join
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -21,6 +27,7 @@ import com.rcappstudios.qualityeducation.adapters.RoomMatesAdapter
 import com.rcappstudios.qualityeducation.databinding.ActivityStudentRoomBinding
 import com.rcappstudios.qualityeducation.model.JoinRoomModel
 import io.agora.rtc2.*
+import me.ibrahimsn.lib.OnItemSelectedListener
 
 class StudentRoomActivity : AppCompatActivity() {
 
@@ -35,6 +42,11 @@ class StudentRoomActivity : AppCompatActivity() {
     private val uid = 0
     private var isJoined = false
     private var agoraEngine: RtcEngine? = null
+
+    companion object{
+        var roomID : String = ""
+    }
+
 
     // UI elements
 //    private var infoText: TextView? = null
@@ -68,8 +80,10 @@ class StudentRoomActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar!!.hide()
         init()
+        setUpBottomNavigation()
+        roomID = intent.getStringExtra("RoomId")!!
+        Log.d("RoomID", "onCreate:activity $roomID")
     }
-
     private fun init(){
         fetchMatesDetails()
         if (!checkSelfPermission()) {
@@ -101,6 +115,22 @@ class StudentRoomActivity : AppCompatActivity() {
         agoraEngine!!.joinChannel(token, channelName, uid, options)
     }
 
+    private fun setUpBottomNavigation(){
+        binding.bottomBar.setOnItemSelectedListener { item ->
+            when(item){
+                R.id.roomWhiteBoard->{
+                    switchToFragment(R.id.roomWhiteBoardFragment2)
+                }
+                R.id.roomVideoStream->{
+                    switchToFragment(R.id.roomVideoStreamFragment2)
+                }
+                R.id.roomChat->{
+                    switchToFragment(R.id.roomChatFragment2)
+                }
+            }
+        }
+    }
+
     fun joinLeaveChannel(view: View?) {
         //TODO: Change th status of the mic button
         if (isJoined) {
@@ -121,7 +151,7 @@ class StudentRoomActivity : AppCompatActivity() {
                         for(c in snapshot.children){
                             matesList.add(c.getValue(JoinRoomModel::class.java)!!)
                         }
-                        Log.d("TAGData", "onDataChange: ${matesList.size}")
+//                        Log.d("TAGData", "onDataChange: ${matesList.size}")
                         initMatesRvAdapter(matesList)
                     }
                 }
@@ -162,4 +192,28 @@ class StudentRoomActivity : AppCompatActivity() {
         }.start()
     }
 
+    private fun getNavController(): NavController {
+        return (supportFragmentManager.findFragmentById(R.id.fragmentContainerView2) as NavHostFragment).navController
+    }
+
+    private fun switchToFragment(destinationId: Int) {
+        if (isFragmentInBackStack(destinationId)) {
+            getNavController().popBackStack(destinationId, false)
+        } else {
+            getNavController().navigate(destinationId)
+        }
+    }
+
+    private fun isFragmentInBackStack(destinationId: Int) =
+        try {
+            getNavController().getBackStackEntry(destinationId)
+            true
+        } catch (e: Exception) {
+            false
+        }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        binding.bottomBar.setItemSelected(R.id.roomWhiteBoard)
+    }
 }

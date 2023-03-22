@@ -68,19 +68,4 @@
             android:id="@+id/action_subjectDetailFragment_to_commentsFragment"
             app:destination="@id/commentsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/roomChatFragment"
-        android:name="com.rcappstudios.qualityeducation.fragments.RoomChatFragment"
-        android:label="fragment_room_chat"
-        tools:layout="@layout/fragment_room_chat" />
-    <fragment
-        android:id="@+id/roomWhiteBoardFragment"
-        android:name="com.rcappstudios.qualityeducation.fragments.RoomWhiteBoardFragment"
-        android:label="fragment_room_white_board"
-        tools:layout="@layout/fragment_room_white_board" />
-    <fragment
-        android:id="@+id/roomVideoStreamFragment"
-        android:name="com.rcappstudios.qualityeducation.fragments.RoomVideoStreamFragment"
-        android:label="fragment_room_video_stream"
-        tools:layout="@layout/fragment_room_video_stream" />
 </navigation>

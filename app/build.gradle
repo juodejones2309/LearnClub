@@ -104,9 +104,6 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
 
-    //Custom bottom navigation
-    implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
-
     //Scalable size units
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
@@ -114,6 +111,10 @@ dependencies {
     //Rounded image view for view pager
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
+    //Custom navigation bar
+    implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
+
+    implementation 'com.github.varunest:sparkbutton:1.0.6'
 }
 
 kapt {

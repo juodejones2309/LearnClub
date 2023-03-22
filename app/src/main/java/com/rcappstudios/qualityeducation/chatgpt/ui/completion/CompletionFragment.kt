@@ -1,4 +1,4 @@
-package com.zero.chatgpt_androidapp.ui.completion
+package com.rcappstudios.qualityeducation.chatgpt.ui.completion
 
 import android.app.Activity
 import android.os.Bundle
@@ -15,6 +15,7 @@ import com.rcappstudios.qualityeducation.databinding.FragmentCompletionBinding
 import com.zero.chatgpt_androidapp.adapter.CompletionAdapter
 import com.zero.chatgpt_androidapp.adapter.model.CompletionAdapterModel
 import com.zero.chatgpt_androidapp.data.completion.model.request.CompletionRequest
+import com.zero.chatgpt_androidapp.ui.completion.CompletionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 

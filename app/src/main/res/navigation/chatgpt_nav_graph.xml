@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/completionFragment"
-        android:name="com.zero.chatgpt_androidapp.ui.completion.CompletionFragment"
+        android:name="com.rcappstudios.qualityeducation.chatgpt.ui.completion.CompletionFragment"
         android:label="fragment_completion"
         tools:layout="@layout/fragment_completion" />
     <fragment
