@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/mplus_rounded_1c_semibold"
             android:text="Test Name"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:padding="@dimen/_5sdp"
 

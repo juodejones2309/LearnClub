@@ -94,19 +94,21 @@ class SubjectDetailFragment : Fragment() {
         FirebaseDatabase.getInstance().getReference("Test/${navArgs.subjectName.toString()}")
             .get().addOnSuccessListener {
                 if(it.exists()){
-                    val testList = mutableListOf<Test>()
+                    val testList = mutableListOf<String>()
                     for(c in it.children){
-                        testList.add(c.getValue(Test::class.java)!!)
+                        testList.add(c.key.toString())
                     }
                     initMockTestAdapter(testList)
                 }
             }
     }
 
-    private fun initMockTestAdapter(testList: MutableList<Test>){
+    private fun initMockTestAdapter(testList: MutableList<String>){
         binding.mockTestRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.mockTestRecyclerView.adapter = MockTestAdapter(requireContext(),testList){int, test->
-           SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMockTestFillFragment(navArgs.subjectName, test.name)
+            val directions = SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMockTestFillFragment(navArgs.subjectName, test)
+            switchToCommentsFragment(directions, R.id.mockTestFillFragment)
+//            SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMockTestFillFragment(navArgs.subjectName, test.name)
         }
     }
 
