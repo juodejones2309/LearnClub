@@ -69,19 +69,17 @@ class MockTestFillFragment : Fragment() {
                 }
                 RadioButton::class.simpleName -> {
                     val rg = RadioGroup(requireContext())
-                    rg.orientation = RadioGroup.HORIZONTAL
+                    rg.orientation = RadioGroup.VERTICAL
+                    llParams.leftMargin = 20
                     for (item in it.items!!) {
                         val rb = RadioButton(requireContext())
                         rb.text = item
+                        rb.textSize = 18F
                         rb.layoutParams = llParams
                         rg.addView(rb)
                     }
-                    rg.setOnCheckedChangeListener { _, id ->
-                        Toast.makeText(
-                            requireContext(),
-                            " ${it.items[id]} selected!",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    rg.setOnCheckedChangeListener { grp, id ->
+
                     }
                     testBinding.fillTestLl.addView(rg)
                 }
@@ -91,4 +89,7 @@ class MockTestFillFragment : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }
