@@ -11,11 +11,11 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.rcappstudios.qualityeducation.chatgpt.adapter.CompletionAdapter
+import com.rcappstudios.qualityeducation.chatgpt.adapter.model.CompletionAdapterModel
+import com.rcappstudios.qualityeducation.chatgpt.completion.model.request.CompletionRequest
 import com.rcappstudios.qualityeducation.databinding.FragmentChatGptBinding
-import com.zero.chatgpt_androidapp.adapter.CompletionAdapter
-import com.zero.chatgpt_androidapp.adapter.model.CompletionAdapterModel
-import com.zero.chatgpt_androidapp.data.completion.model.request.CompletionRequest
-import com.zero.chatgpt_androidapp.ui.completion.CompletionViewModel
+import com.rcappstudios.qualityeducation.chatgpt.ui.completion.CompletionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

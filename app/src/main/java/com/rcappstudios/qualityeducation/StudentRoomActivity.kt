@@ -1,25 +1,22 @@
 package com.rcappstudios.qualityeducation
 
 import android.Manifest
+
 import android.content.pm.PackageManager
-import android.graphics.Paint.Join
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import android.widget.CompoundButton
-import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -28,7 +25,7 @@ import com.rcappstudios.qualityeducation.adapters.RoomMatesAdapter
 import com.rcappstudios.qualityeducation.databinding.ActivityStudentRoomBinding
 import com.rcappstudios.qualityeducation.model.JoinRoomModel
 import io.agora.rtc2.*
-import me.ibrahimsn.lib.OnItemSelectedListener
+
 
 class StudentRoomActivity : AppCompatActivity() {
 
@@ -87,6 +84,8 @@ class StudentRoomActivity : AppCompatActivity() {
         roomID = intent.getStringExtra("RoomId")!!
         hostID = intent.getStringExtra("hostID")!!
         Log.d("RoomID", "onCreate:activity $roomID")
+        binding.bottomBar.setItemSelected(R.id.roomWhiteBoard)
+
     }
     private fun init(){
         fetchMatesDetails()
@@ -95,8 +94,6 @@ class StudentRoomActivity : AppCompatActivity() {
         }
         setupVoiceSDKEngine();
         joinChannel()
-//        joinLeaveButton = findViewById(R.id.joinLeaveButton);
-//        infoText = findViewById(R.id.infoText);
         binding.audioSwitch.isChecked = true
 
         binding.audioSwitch.setOnCheckedChangeListener(object :CompoundButton.OnCheckedChangeListener{
@@ -211,6 +208,9 @@ class StudentRoomActivity : AppCompatActivity() {
             RtcEngine.destroy()
             agoraEngine = null
         }.start()
+
+        FirebaseDatabase.getInstance().getReference("Room/${roomID}/mates/${ FirebaseAuth.getInstance().uid}")
+            .removeValue()
     }
 
     private fun getNavController(): NavController {
@@ -234,7 +234,20 @@ class StudentRoomActivity : AppCompatActivity() {
         }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        if(binding.bottomBar.getSelectedItemId() == R.id.roomWhiteBoard){
+
+            val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+
+            builder.setTitle("Leave Room")
+            builder.setMessage("Are you sure to leave room?")
+            builder .setPositiveButton("Ok"){_,_->
+                super.onBackPressed()
+                }.setNegativeButton("Cancel", /* listener = */ null)
+                .show();
+        }
+
         binding.bottomBar.setItemSelected(R.id.roomWhiteBoard)
     }
+
+
 }

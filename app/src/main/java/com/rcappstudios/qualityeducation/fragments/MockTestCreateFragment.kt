@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.view.*
+import androidx.navigation.fragment.navArgs
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -24,15 +25,16 @@ class MockTestCreateFragment : Fragment() {
     private lateinit var radioAdapter: ArrayAdapter<String>
     private var database = FirebaseDatabase.getInstance()
     private var testList: MutableList<Test?> = mutableListOf()
-    private var subject = "Physics"
 
+    val navArgs: SubjectDetailFragmentArgs by navArgs()
+    private lateinit var subject : String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentMockTestCreateBinding.inflate(layoutInflater, container, false)
-
+        subject= navArgs.subjectName.toString()
         val types = arrayOf(EditText::class.simpleName, RadioButton::class.simpleName)
         radioAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, types)
         radioAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

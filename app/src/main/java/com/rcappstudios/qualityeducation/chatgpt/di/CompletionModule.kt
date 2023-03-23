@@ -23,7 +23,7 @@ class CompletionModule {
 
     @Singleton
     @Provides
-    fun providesCompletionRemoteRepository(completionRemoteDataSource: CompletionRemoteDataSource): CompletionRemoteRepository{
+    fun providesCompletionRemoteRepository(completionRemoteDataSource: CompletionRemoteDataSource): CompletionRemoteRepository {
         return CompletionRemoteRepository(completionRemoteDataSource)
     }
 

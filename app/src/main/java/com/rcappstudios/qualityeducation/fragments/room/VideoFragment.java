@@ -1,4 +1,4 @@
-package com.rcappstudios.qualityeducation.fragments;
+package com.rcappstudios.qualityeducation.fragments.room;
 
 import static io.agora.base.internal.ContextUtils.getApplicationContext;
 

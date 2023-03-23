@@ -10,7 +10,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.database.FirebaseDatabase
 import com.rcappstudios.qualityeducation.databinding.ActivityMainBinding
-import com.zero.chatgpt_androidapp.ui.ChatGptActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

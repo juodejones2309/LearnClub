@@ -6,7 +6,7 @@
     app:startDestination="@id/roomWhiteBoardFragment2">
     <fragment
         android:id="@+id/roomChatFragment2"
-        android:name="com.rcappstudios.qualityeducation.fragments.RoomChatFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.room.RoomChatFragment"
         android:label="fragment_room_chat"
         tools:layout="@layout/fragment_room_chat" />
     <fragment
@@ -16,12 +16,12 @@
         tools:layout="@layout/fragment_room_white_board" />
     <fragment
         android:id="@+id/roomVideoStreamFragment2"
-        android:name="com.rcappstudios.qualityeducation.fragments.RoomVideoStreamFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.room.RoomVideoStreamFragment"
         android:label="fragment_room_video_stream"
         tools:layout="@layout/fragment_room_video_stream" />
     <fragment
         android:id="@+id/videoFragment"
-        android:name="com.rcappstudios.qualityeducation.fragments.VideoFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.room.VideoFragment"
         android:label="fragment_video"
         tools:layout="@layout/fragment_video" />
 </navigation>

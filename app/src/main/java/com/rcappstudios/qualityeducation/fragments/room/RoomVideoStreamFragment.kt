@@ -1,4 +1,4 @@
-package com.rcappstudios.qualityeducation.fragments
+package com.rcappstudios.qualityeducation.fragments.room
 
 import android.Manifest
 import android.content.pm.PackageManager

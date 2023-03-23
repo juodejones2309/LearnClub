@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/peerLearningFragment"
-        android:name="com.rcappstudios.qualityeducation.fragments.PeerLearningFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.room.PeerLearningFragment"
         android:label="fragment_peer_learning"
         tools:layout="@layout/fragment_peer_learning" />
     <fragment
@@ -67,15 +67,40 @@
         <action
             android:id="@+id/action_subjectDetailFragment_to_commentsFragment"
             app:destination="@id/commentsFragment" />
+        <action
+            android:id="@+id/action_subjectDetailFragment_to_mockTestCreateFragment"
+            app:destination="@id/mockTestCreateFragment" />
+        <action
+            android:id="@+id/action_subjectDetailFragment_to_mockTestFillFragment3"
+            app:destination="@id/mockTestFillFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatGptFragment"
         android:name="com.rcappstudios.qualityeducation.fragments.ChatGptFragment"
         android:label="fragment_chat_gpt"
         tools:layout="@layout/fragment_chat_gpt" />
+
     <fragment
-        android:id="@+id/mockTestListFragment"
-        android:name="com.rcappstudios.qualityeducation.fragments.MockTestListFragment"
-        android:label="fragment_mock_test_list"
-        tools:layout="@layout/fragment_mock_test_list" />
+        android:id="@+id/mockTestCreateFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.MockTestCreateFragment"
+        android:label="fragment_mock_test_create"
+        tools:layout="@layout/fragment_mock_test_create" >
+        <argument
+            android:name="subjectName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/mockTestFillFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.MockTestFillFragment"
+        android:label="fragment_mock_test_fill"
+        tools:layout="@layout/fragment_mock_test_fill" >
+        <argument
+            android:name="subjectName"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="testName"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

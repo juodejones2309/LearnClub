@@ -37,7 +37,7 @@ class SelectSubjectFragment : Fragment() {
             switchToSubjectDetail(
                 SelectSubjectFragmentDirections
                     .actionSelectSubjectFragmentToSubjectDetailFragment
-                        ("subject_name"),
+                        ("Physics"),
                 R.id.subjectDetailFragment)
         }
 

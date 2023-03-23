@@ -1,9 +1,8 @@
-package com.rcappstudios.qualityeducation.fragments
+package com.rcappstudios.qualityeducation.fragments.room
 
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
-import android.view.Display.Mode
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,14 +10,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.StudentRoomActivity
 import com.rcappstudios.qualityeducation.adapters.PeerLearningAdapter
 import com.rcappstudios.qualityeducation.databinding.FragmentPeerLearningBinding
 import com.rcappstudios.qualityeducation.model.JoinRoomModel
 import com.rcappstudios.qualityeducation.model.RoomModel
 import com.rcappstudios.qualityeducation.utils.Constants
-import java.util.Calendar
 
 
 class PeerLearningFragment : Fragment() {

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.google.firebase.database.FirebaseDatabase
 import com.rcappstudios.qualityeducation.databinding.FragmentMockTestFillBinding
 import com.rcappstudios.qualityeducation.databinding.RowFillTestBinding
@@ -15,6 +16,7 @@ import com.rcappstudios.qualityeducation.model.Field
 class MockTestFillFragment : Fragment() {
 
     private lateinit var binding: FragmentMockTestFillBinding
+    val navArgs: MockTestFillFragmentArgs by navArgs()
     private var subject = "Physics"
     private var testName = "test"
     private var testFields: MutableList<Field> = mutableListOf()
@@ -31,7 +33,8 @@ class MockTestFillFragment : Fragment() {
     ): View? {
 
         binding = FragmentMockTestFillBinding.inflate(inflater, container, false)
-
+        subject = navArgs.subjectName!!
+        testName = navArgs.testName!!
         FirebaseDatabase.getInstance()
             .getReference("Test/$subject/${testName}/questions/fields")
             .get()

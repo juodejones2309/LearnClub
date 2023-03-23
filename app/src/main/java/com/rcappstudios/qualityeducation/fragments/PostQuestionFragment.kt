@@ -27,6 +27,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.databinding.FragmentPostQuestionBinding
 import com.rcappstudios.qualityeducation.model.QuestionModel
+import com.rcappstudios.qualityeducation.utils.LoadingDialog
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -39,6 +40,7 @@ class PostQuestionFragment : Fragment() {
     private var dataCode: Int = 0
     private  var  imageUri : Uri?= null
     private lateinit var subjectName: String
+    private lateinit var loadingDialog: LoadingDialog
 
     private val getImage = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -64,6 +66,7 @@ class PostQuestionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loadingDialog = LoadingDialog(requireActivity(), "Loading Please wait....")
         clickListener()
     }
 
@@ -115,8 +118,10 @@ class PostQuestionFragment : Fragment() {
 
     private fun extractDetails(){
         if(binding.etQuestion.text.toString().isNotEmpty() && imageUri != null){
+            loadingDialog.startLoading()
             storeImage()
         }else {
+            loadingDialog.startLoading()
             storeToDatabase("")
         }
     }
@@ -145,7 +150,9 @@ class PostQuestionFragment : Fragment() {
 //                        subjectName = subjectName
                         )).addOnSuccessListener {
                             requireActivity().onBackPressed()
-                        }
+                        }.addOnSuccessListener {
+                            loadingDialog.dismiss()
+                }
         } else {
             FirebaseDatabase.getInstance().getReference("Questions/${questionID}")
                 .setValue(
@@ -159,7 +166,7 @@ class PostQuestionFragment : Fragment() {
                         imageUrl = imageUrl
                     )).addOnSuccessListener {
                         requireActivity().onBackPressed()
-                    }
+                    }.addOnSuccessListener { loadingDialog.dismiss() }
         }
     }
 
