@@ -106,7 +106,7 @@ class SubjectDetailFragment : Fragment() {
     private fun initMockTestAdapter(testList: MutableList<Test>){
         binding.mockTestRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.mockTestRecyclerView.adapter = MockTestAdapter(requireContext(),testList){int, test->
-//           SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMockTestFillFragment(navArgs.subjectName, test.name)
+           SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMockTestFillFragment(navArgs.subjectName, test.name)
         }
     }
 

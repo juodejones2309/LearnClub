@@ -71,7 +71,7 @@
             android:id="@+id/action_subjectDetailFragment_to_mockTestCreateFragment"
             app:destination="@id/mockTestCreateFragment" />
         <action
-            android:id="@+id/action_subjectDetailFragment_to_mockTestFillFragment3"
+            android:id="@+id/action_subjectDetailFragment_to_mockTestFillFragment"
             app:destination="@id/mockTestFillFragment" />
     </fragment>
     <fragment
