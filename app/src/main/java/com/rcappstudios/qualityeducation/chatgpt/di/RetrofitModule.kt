@@ -1,4 +1,4 @@
-package com.zero.chatgpt_androidapp.di
+package com.rcappstudios.qualityeducation.chatgpt.di
 
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -22,7 +22,7 @@ class RetrofitModule {
     @Provides
     @Singleton
     fun providesOkHttpClient(): OkHttpClient{
-        val token = "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"
+        val token = "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"
         return OkHttpClient.Builder().addInterceptor(Interceptor { chain ->
             val newRequest: Request =
                 chain.request().newBuilder()

@@ -68,4 +68,14 @@
             android:id="@+id/action_subjectDetailFragment_to_commentsFragment"
             app:destination="@id/commentsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/chatGptFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.ChatGptFragment"
+        android:label="fragment_chat_gpt"
+        tools:layout="@layout/fragment_chat_gpt" />
+    <fragment
+        android:id="@+id/mockTestListFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.MockTestListFragment"
+        android:label="fragment_mock_test_list"
+        tools:layout="@layout/fragment_mock_test_list" />
 </navigation>

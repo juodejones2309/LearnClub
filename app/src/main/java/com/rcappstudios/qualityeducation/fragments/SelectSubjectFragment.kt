@@ -40,10 +40,7 @@ class SelectSubjectFragment : Fragment() {
                 R.id.subjectDetailFragment)
         }
 
-        binding.chatGptBt.setOnClickListener {
-            var intent = Intent(requireActivity(), ChatGptActivity::class.java)
-            requireActivity().startActivity(intent)
-        }
+
     }
 
     private fun switchToSubjectDetail(actions: NavDirections, destinationId: Int){

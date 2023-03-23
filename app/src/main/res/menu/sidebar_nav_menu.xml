@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/selectSubjectFragment"
+        android:title="Select Subject"
+        android:icon="@drawable/baseline_select_subject"/>
+
+    <item
+        android:id="@+id/chatGptFragment"
+        android:title="Ask our AI"
+        android:icon="@drawable/baseline_question_answer_24"/>
+
+    <item
+        android:title="Take Mock Test"
+        android:id="@+id/mockTestListFragment"
+        android:icon="@drawable/baseline_mock_test"/>
+
+
+</menu>
