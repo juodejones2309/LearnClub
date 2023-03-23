@@ -13,4 +13,10 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="create_test">Create Test</string>
+    <string name="creating_a_test">Creating a test</string>
+    <string name="enter_test_name">Enter Test Name</string>
+    <string name="field_label">Field Label</string>
+    <string name="radioBt_hint">Enter choices separated by comma \',\'</string>
+    <string name="submit">Submit</string>
 </resources>

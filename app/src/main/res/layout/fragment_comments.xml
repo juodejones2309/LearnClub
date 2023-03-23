@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.CommentsFragment">
 
-</FrameLayout>
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/cmntToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Comment Section"
+        app:titleTextColor="@color/gpt_green"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cmntToolBar"
+        android:layout_above="@+id/commentLL"
+        />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/commentLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        >
+        <EditText
+            android:id="@+id/etComment"
+            android:layout_width="wrap_content"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:hint="Ask your question....."
+            android:textColorHint="@color/gpt_green"
+            android:layout_margin="@dimen/_5sdp"
+            android:textColor="@color/gpt_green"
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/background_edit_text"
+            android:layout_alignParentBottom="true"/>
+
+        <ImageButton
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:src="@drawable/baseline_send_24"
+            android:layout_margin="@dimen/_5sdp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</RelativeLayout>
