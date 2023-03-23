@@ -1,4 +1,4 @@
-package com.zero.chatgpt_androidapp.adapter
+package com.rcappstudios.qualityeducation.chatgpt.adapter
 
 import android.content.Context
 import android.media.MediaPlayer
@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.makeramen.roundedimageview.RoundedImageView
 import com.rcappstudios.qualityeducation.R
-import com.zero.chatgpt_androidapp.adapter.model.CompletionAdapterModel
+import com.rcappstudios.qualityeducation.chatgpt.adapter.model.CompletionAdapterModel
 
 class CompletionAdapter(
     private val context: Context,

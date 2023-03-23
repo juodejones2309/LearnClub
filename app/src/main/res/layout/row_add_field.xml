@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/field_label"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:hint="@string/field_label"
+            android:textSize="@dimen/_12ssp" />
+
+        <Spinner
+            android:id="@+id/type_spinner"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/row_add_delete_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#00FFFFFF"
+            android:layout_margin="@dimen/_5sdp"
+            android:src="@drawable/baseline_delete_24"
+            />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/radio_list_et"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:hint="@string/radioBt_hint"
+        android:textSize="@dimen/_12ssp" />
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.zero.chatgpt_androidapp.adapter.model
+package com.rcappstudios.qualityeducation.chatgpt.adapter.model
 
 data class CompletionAdapterModel(
     val text: String ?= null,

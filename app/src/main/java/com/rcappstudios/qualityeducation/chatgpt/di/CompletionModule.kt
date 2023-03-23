@@ -1,9 +1,9 @@
 package com.rcappstudios.qualityeducation.chatgpt.di
 
-import com.zero.chatgpt_androidapp.data.completion.api.CompletionAPIService
-import com.zero.chatgpt_androidapp.data.completion.datasource.CompletionRemoteDataSource
-import com.zero.chatgpt_androidapp.data.completion.datasourceimpl.CompletionRemoteDataSourceImpl
-import com.zero.chatgpt_androidapp.data.completion.repository.CompletionRemoteRepository
+import com.rcappstudios.qualityeducation.chatgpt.completion.api.CompletionAPIService
+import com.rcappstudios.qualityeducation.chatgpt.completion.datasource.CompletionRemoteDataSource
+import com.rcappstudios.qualityeducation.chatgpt.completion.datasourceimpl.CompletionRemoteDataSourceImpl
+import com.rcappstudios.qualityeducation.chatgpt.completion.repository.CompletionRemoteRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -11,11 +11,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.rcappstudios.qualityeducation.chatgpt.adapter.CompletionAdapter
+import com.rcappstudios.qualityeducation.chatgpt.adapter.model.CompletionAdapterModel
+import com.rcappstudios.qualityeducation.chatgpt.completion.model.request.CompletionRequest
 import com.rcappstudios.qualityeducation.databinding.FragmentCompletionBinding
-import com.zero.chatgpt_androidapp.adapter.CompletionAdapter
-import com.zero.chatgpt_androidapp.adapter.model.CompletionAdapterModel
-import com.zero.chatgpt_androidapp.data.completion.model.request.CompletionRequest
-import com.zero.chatgpt_androidapp.ui.completion.CompletionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -30,7 +29,7 @@ class CompletionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCompletionBinding.inflate(layoutInflater,container,false)
+        binding = FragmentCompletionBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -41,7 +40,7 @@ class CompletionFragment : Fragment() {
         clickListener()
     }
 
-    private fun initAdapter(){
+    private fun initAdapter() {
         adapter = CompletionAdapter(requireContext(), mutableListOf())
         binding.rvChat.layoutManager = LinearLayoutManager(requireContext())
         binding.rvChat.adapter = adapter
@@ -49,39 +48,57 @@ class CompletionFragment : Fragment() {
         attachObserver()
     }
 
-    private fun clickListener(){
+    private fun clickListener() {
         binding.btnAsk.setOnClickListener {
-            if(binding.etQuestion.text.toString() != ""){
+            if (binding.etQuestion.text.toString() != "") {
                 viewModel.questionLiveData.value = createRequest(binding.etQuestion.text.toString())
-                adapter.addCompletionData(createAdapterModel(binding.etQuestion.text.toString(),false))
+                adapter.addCompletionData(
+                    createAdapterModel(
+                        binding.etQuestion.text.toString(),
+                        false
+                    )
+                )
                 binding.etQuestion.text.clear()
                 hideKeyboard(requireActivity())
-                binding.rvChat.scrollToPosition(adapter.itemCount -1 )
+                binding.rvChat.scrollToPosition(adapter.itemCount - 1)
             } else {
-                Toast.makeText(requireContext(),"Please ask question to continue", Toast.LENGTH_LONG)
+                Toast.makeText(
+                    requireContext(),
+                    "Please ask question to continue",
+                    Toast.LENGTH_LONG
+                )
                     .show()
             }
         }
     }
 
-    private fun attachObserver(){
-        viewModel.completionResultLiveData.observe(viewLifecycleOwner){
+    private fun attachObserver() {
+        viewModel.completionResultLiveData.observe(viewLifecycleOwner) {
             Log.d("TAGData", "attachObserver: $it")
-            adapter.addCompletionData(createAdapterModel(it?.choices?.get(0)!!.text.toString(),true))
+            // {it} is being returned as null should check it
+            if (it.choices != null && it.choices.count() != 0) {
+                adapter.addCompletionData(
+                    createAdapterModel(
+                        it?.choices[0].text,
+                        true
+                    )
+                )
+            }
             binding.rvChat.scrollToPosition(adapter.itemCount - 1)
         }
     }
 
     private fun createAdapterModel(text: String, isBot: Boolean): CompletionAdapterModel {
-        return CompletionAdapterModel(text,isBot)
+        return CompletionAdapterModel(text, isBot)
     }
-    private fun createRequest(query: String): CompletionRequest{
-        return  CompletionRequest(
+
+    private fun createRequest(query: String): CompletionRequest {
+        return CompletionRequest(
             model = "text-davinci-003",
             prompt = query,
             maxTokens = 100,
-            temperature= 0,
-            stream =  false
+            temperature = 0,
+            stream = false
         )
     }
 

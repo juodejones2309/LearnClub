@@ -41,7 +41,7 @@ tools:context=".fragments.RoomChatFragment">
         android:background="@drawable/circle_bg"
         android:contentDescription="sendMessage"
         android:padding="@dimen/_8sdp"
-        android:src="@drawable/ic_send" />
+        android:src="@drawable/baseline_send_24" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
 

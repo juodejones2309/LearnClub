@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_completion" />
     <fragment
         android:id="@+id/imageGeneratorFragment"
-        android:name="com.zero.chatgpt_androidapp.ui.imagegenerator.ImageGeneratorFragment"
+        android:name="com.rcappstudios.qualityeducation.chatgpt.ui.imagegenerator.ImageGeneratorFragment"
         android:label="fragment_image_generator"
         tools:layout="@layout/fragment_image_generator" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.zero.chatgpt_androidapp.ui.imagegenerator
+package com.rcappstudios.qualityeducation.chatgpt.ui.imagegenerator
 
 import android.app.Activity
 import android.os.Bundle
@@ -13,12 +13,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.databinding.FragmentImageGeneratorBinding
-import com.zero.chatgpt_androidapp.adapter.CompletionAdapter
-import com.zero.chatgpt_androidapp.adapter.ImageGenerationAdapter
-import com.zero.chatgpt_androidapp.adapter.model.CompletionAdapterModel
-import com.zero.chatgpt_androidapp.adapter.model.ImageGenerationAdapterModel
-import com.zero.chatgpt_androidapp.data.completion.model.image.request.ImageGenerationRequest
-import com.zero.chatgpt_androidapp.data.completion.model.request.CompletionRequest
+import com.rcappstudios.qualityeducation.chatgpt.adapter.CompletionAdapter
+import com.rcappstudios.qualityeducation.chatgpt.adapter.ImageGenerationAdapter
+import com.rcappstudios.qualityeducation.chatgpt.adapter.model.CompletionAdapterModel
+import com.rcappstudios.qualityeducation.chatgpt.adapter.model.ImageGenerationAdapterModel
+import com.rcappstudios.qualityeducation.chatgpt.completion.model.image.request.ImageGenerationRequest
+import com.rcappstudios.qualityeducation.chatgpt.completion.model.request.CompletionRequest
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
