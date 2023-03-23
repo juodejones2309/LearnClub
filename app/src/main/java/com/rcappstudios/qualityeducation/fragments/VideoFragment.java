@@ -41,9 +41,9 @@ public class VideoFragment extends Fragment {
     // Fill the App ID of your project generated on Agora Console.
     private final String appId = "a9c7eed08a8a4e4bba648e6e6e879163";
     // Fill the channel name.
-    private String channelName = "1";
+    private String channelName = "2";
     // Fill the temp token generated on Agora Console.
-    private String token = "007eJxTYFi98MDyuG3iP25oa/F+7VQ1/JiYWxm2bF7v8e2+PTrHfJMUGBItk81TU1MMLBItEk1STZKSEs1MLFLNgNDC3NLQzPjLEamUhkBGhr/2k5kYGSAQxGdkMGRgAABTDR+S";
+    private String token = "007eJxTYLBll5kTeqmlc2WEDMPWA/ICc6a7LjF7dL4oreAF58TNa5MVGBItk81TU1MMLBItEk1STZKSEs1MLFLNgNDC3NLQzFhVVzqlIZCR4ZqwGgMjFIL4jAxGDAwAdMcbsg==";
     // An integer that identifies the local user.
     private int uid = 0;
     private boolean isJoined = false;
