@@ -18,6 +18,7 @@ class SelectSubjectFragment : Fragment() {
     private lateinit var binding: FragmentSelectSubjectBinding
 
     override fun onCreateView(
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
@@ -58,6 +59,7 @@ class SelectSubjectFragment : Fragment() {
 
     private fun isFragmentInBackStack(destinationId: Int) =
         try {
+
             getNavController().getBackStackEntry(destinationId)
             true
         } catch (e: Exception) {
