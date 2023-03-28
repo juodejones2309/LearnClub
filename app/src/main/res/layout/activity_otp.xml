@@ -7,10 +7,82 @@
     tools:context=".OtpActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/userTypeLayout"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvDescribe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What Best Describes you?"
+            android:textSize="@dimen/_35ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_80sdp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescribe"
+            android:layout_margin="@dimen/_10sdp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/stdCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/_10sdp"
+                android:backgroundTint="@color/pink"
+                app:cardCornerRadius="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_45sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_10sdp"
+                    android:text="I'm a student"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_30ssp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mentorCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/_10sdp"
+                android:backgroundTint="@color/pink"
+                app:cardCornerRadius="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_45sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="I'm a Mentor"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_30ssp" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/sendOtpView"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,12 +122,20 @@
             android:background="@drawable/background_edit_text"
             android:hint="Enter phone number"
             android:fontFamily="@font/mplus_rounded_1c_medium"
-
             android:padding="@dimen/_10sdp"
             android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView"
             app:layout_constraintStart_toStartOf="@+id/lottieAnimationView"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Spinner
+            android:id="@+id/subjectSpinner"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView"
+            app:layout_constraintStart_toStartOf="@+id/lottieAnimationView"
+            app:layout_constraintTop_toBottomOf="@+id/etNumber"/>
 
         <Button
             android:id="@+id/btnSendOtp"
@@ -66,7 +146,7 @@
             android:fontFamily="@font/mplus_rounded_1c_medium"
             app:layout_constraintEnd_toEndOf="@+id/lottieAnimationView"
             app:layout_constraintStart_toStartOf="@+id/lottieAnimationView"
-            app:layout_constraintTop_toBottomOf="@+id/etNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/subjectSpinner" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -166,6 +246,7 @@
             android:hint="Enter grade"
             android:inputType="number"
             android:padding="@dimen/_10sdp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/etName" />
@@ -182,6 +263,5 @@
             app:layout_constraintTop_toBottomOf="@+id/etGrade" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
