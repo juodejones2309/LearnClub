@@ -1,6 +1,7 @@
 package com.rcappstudios.qualityeducation.fragments.mentors
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -74,9 +75,11 @@ class MentorsFragment : Fragment() {
             requireContext(),
             mentorList
         ){mentorUserId->
-
+            val intent = Intent(requireActivity(), MentorSupportActivity::class.java)
+            intent.putExtra("mentorUserId", mentorUserId)
+            intent.putExtra("subject",subject)
+            requireActivity().startActivity(intent)
         }
-
         dialog.show()
     }
 
