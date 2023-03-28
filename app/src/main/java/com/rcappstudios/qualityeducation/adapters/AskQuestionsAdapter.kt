@@ -53,6 +53,10 @@ class AskQuestionsAdapter(
         binding.comments.setOnClickListener {
             onClick.invoke(2, question.questionID!!)
         }
+        binding.youtube.setOnClickListener {
+            if(question.question != null)
+                onClick.invoke(1, question.question.toString())
+        }
     }
 
 

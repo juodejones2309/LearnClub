@@ -23,7 +23,8 @@ class SelectSubjectFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentSelectSubjectBinding.inflate(layoutInflater)
+        binding =
+            FragmentSelectSubjectBinding.inflate(layoutInflater)
         return binding.root
     }
 

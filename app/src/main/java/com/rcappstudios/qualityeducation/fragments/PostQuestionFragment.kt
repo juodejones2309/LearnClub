@@ -160,7 +160,7 @@ class PostQuestionFragment : Fragment() {
                         question = binding.etQuestion.text.toString(),
                         questionID = questionID.toString(),
                         timeStamp = Calendar.getInstance().timeInMillis,
-                        userImageUrl = FirebaseAuth.getInstance().currentUser!!.photoUrl.toString(),
+                        userImageUrl = "https://picsum.photos/200/300",
                         userName = FirebaseAuth.getInstance().currentUser!!.displayName,
 //                        subjectName = subjectName,
                         imageUrl = imageUrl

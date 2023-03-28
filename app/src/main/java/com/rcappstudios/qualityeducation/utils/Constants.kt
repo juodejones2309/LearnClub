@@ -8,4 +8,8 @@ object Constants {
 
     const val NAME = "name"
 
+    const val YOUTUBE_API_KEY = "AIzaSyCAu-zrCeVJavtWcFxeL-MoXDjRFid6TAQ"
+
+    const val CHAT_GPT_TOKEN = "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"
+
 }

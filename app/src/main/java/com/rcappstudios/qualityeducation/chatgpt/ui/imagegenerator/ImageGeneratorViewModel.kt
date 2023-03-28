@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Transformations
 import com.rcappstudios.qualityeducation.chatgpt.completion.model.image.request.ImageGenerationRequest
-import com.rcappstudios.qualityeducation.chatgpt.completion.repository.CompletionRemoteRepository
+import com.rcappstudios.qualityeducation.chatgpt.completion.model.repository.CompletionRemoteRepository
 import com.rcappstudios.qualityeducation.chatgpt.networkutils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

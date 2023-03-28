@@ -10,6 +10,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.adapters.AskQuestionsAdapter
@@ -43,6 +44,10 @@ class SubjectDetailFragment : Fragment() {
         fetchDoubtsData()
         fetchRoomsList()
         getMockTestList()
+
+        if(FirebaseAuth.getInstance().currentUser!!.uid != "r2z2HA4PMGYJIenwaMo9tZdSQFF2"){
+            binding.createTest.visibility = View.GONE
+        }
     }
 
     private fun clickListener(){

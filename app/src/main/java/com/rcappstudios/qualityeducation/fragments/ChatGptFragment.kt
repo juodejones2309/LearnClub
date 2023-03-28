@@ -68,8 +68,10 @@ class ChatGptFragment : Fragment() {
     private fun attachObserver(){
         viewModel.completionResultLiveData.observe(viewLifecycleOwner){
             Log.d("TAGData", "attachObserver: $it")
-            adapter.addCompletionData(createAdapterModel(it?.choices?.get(0)!!.text.toString(),true))
-            binding.rvChat.scrollToPosition(adapter.itemCount - 1)
+            if(it != null){
+                adapter.addCompletionData(createAdapterModel(it?.choices?.get(0)!!.text.toString(),true))
+                binding.rvChat.scrollToPosition(adapter.itemCount - 1)
+            }
         }
     }
 

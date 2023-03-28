@@ -1,4 +1,4 @@
-package com.rcappstudios.qualityeducation.chatgpt.completion.repository
+package com.rcappstudios.qualityeducation.chatgpt.completion.model.repository
 
 import com.rcappstudios.qualityeducation.chatgpt.completion.datasource.CompletionRemoteDataSource
 

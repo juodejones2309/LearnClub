@@ -82,7 +82,7 @@
 
     <fragment
         android:id="@+id/mockTestCreateFragment"
-        android:name="com.rcappstudios.qualityeducation.fragments.MockTestCreateFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.mocktest.MockTestCreateFragment"
         android:label="fragment_mock_test_create"
         tools:layout="@layout/fragment_mock_test_create" >
         <argument
@@ -91,7 +91,7 @@
     </fragment>
     <fragment
         android:id="@+id/mockTestFillFragment"
-        android:name="com.rcappstudios.qualityeducation.fragments.MockTestFillFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.mocktest.MockTestFillFragment"
         android:label="fragment_mock_test_fill"
         tools:layout="@layout/fragment_mock_test_fill" >
         <argument
@@ -103,4 +103,9 @@
             app:argType="string"
             app:nullable="true" />
     </fragment>
+    <fragment
+        android:id="@+id/mentorsFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.mentors.MentorsFragment"
+        android:label="fragment_mentors"
+        tools:layout="@layout/fragment_mentors" />
 </navigation>

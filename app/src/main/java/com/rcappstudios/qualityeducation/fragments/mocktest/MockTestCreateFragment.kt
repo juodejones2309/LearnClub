@@ -1,4 +1,4 @@
-package com.rcappstudios.qualityeducation.fragments
+package com.rcappstudios.qualityeducation.fragments.mocktest
 
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.databinding.FragmentMockTestCreateBinding
 import com.rcappstudios.qualityeducation.databinding.RowAddFieldBinding
+import com.rcappstudios.qualityeducation.fragments.SubjectDetailFragmentArgs
 import com.rcappstudios.qualityeducation.model.Field
 import com.rcappstudios.qualityeducation.model.Test
 
@@ -35,7 +36,7 @@ class MockTestCreateFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentMockTestCreateBinding.inflate(layoutInflater, container, false)
         subject= navArgs.subjectName.toString()
-        val types = arrayOf(EditText::class.simpleName, RadioButton::class.simpleName)
+        val types = arrayOf("Fillup", "MCQ")
         radioAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, types)
         radioAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 

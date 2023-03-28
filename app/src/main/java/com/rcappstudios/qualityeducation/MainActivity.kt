@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpNavigationComponent()
 
+//        FirebaseDatabase.getInstance()
+//            .getReference("Room/-NQtlKL0du600SeiAvE9/whiteBoard")
+//            .removeValue()
+
     }
 
     private fun setUpNavigationComponent(){

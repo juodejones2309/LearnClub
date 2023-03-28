@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.AskDoubtFragment">
 
-    <include
-        android:id="@+id/bottomSheet"
-        layout="@layout/youtube_bottom_sheet"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,4 +32,10 @@
             android:src="@drawable/baseline_question_mark_24"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <include
+        android:id="@+id/bottomSheet"
+        layout="@layout/youtube_bottom_sheet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

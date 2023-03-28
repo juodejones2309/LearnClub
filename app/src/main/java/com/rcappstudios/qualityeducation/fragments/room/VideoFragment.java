@@ -19,7 +19,9 @@ import android.widget.FrameLayout;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.rcappstudios.qualityeducation.R;
+import com.rcappstudios.qualityeducation.StudentRoomActivity;
 import com.rcappstudios.qualityeducation.databinding.FragmentVideoBinding;
 
 import io.agora.rtc2.ChannelMediaOptions;
@@ -43,7 +45,7 @@ public class VideoFragment extends Fragment {
     // Fill the channel name.
     private String channelName = "2";
     // Fill the temp token generated on Agora Console.
-    private String token = "007eJxTYLBll5kTeqmlc2WEDMPWA/ICc6a7LjF7dL4oreAF58TNa5MVGBItk81TU1MMLBItEk1STZKSEs1MLFLNgNDC3NLQzFhVVzqlIZCR4ZqwGgMjFIL4jAxGDAwAdMcbsg==";
+    private String token = "007eJxTYIiq/T7Pkbs28ubPS3Miv6w4eTP6gMjlv8887/Rt+1qr+0NRgSHRMtk8NTXFwCLRItEk1SQpKdHMxCLVDAgtzC0NzYw7WeRTGgIZGUS2HGVhZIBAEJ+RwYiBAQAZyyFd";
     // An integer that identifies the local user.
     private int uid = 0;
     private boolean isJoined = false;
@@ -97,8 +99,6 @@ public class VideoFragment extends Fragment {
         return true;
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -112,6 +112,15 @@ public class VideoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         setupVideoSDKEngine();
         audienceRole = (Switch) requireActivity().findViewById(R.id.switch1);
+        if(StudentRoomActivity.getHostID().equals( FirebaseAuth.getInstance().getUid())){
+            binding.localVideoViewContainer.setVisibility(View.VISIBLE);
+            binding.remoteVideoViewContainer.setVisibility(View.GONE);
+            audienceRole.setChecked(false);
+        } else {
+            binding.remoteVideoViewContainer.setVisibility(View.VISIBLE);
+            binding.localVideoViewContainer.setVisibility(View.GONE);
+            audienceRole.setChecked(true);
+        }
         binding.JoinButton.setOnClickListener(view1 -> {
             joinChannel();
         });

@@ -32,7 +32,7 @@ class RoomMatesAdapter(
 
         if(mate.userImage != null){
             Picasso.get()
-                .load(mate.userImage)
+                .load("https://picsum.photos/200/300")
                 .fit().centerCrop()
                 .into(binding.profileImage)
         }

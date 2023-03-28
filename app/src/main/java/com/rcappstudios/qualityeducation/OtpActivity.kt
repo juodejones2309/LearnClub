@@ -13,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.rcappstudios.qualityeducation.databinding.ActivityOtpBinding
 import com.rcappstudios.qualityeducation.model.StudentData
 import com.rcappstudios.qualityeducation.utils.Constants
+import com.rcappstudios.qualityeducation.utils.LoadingDialog
 import java.util.concurrent.TimeUnit
 
 class OtpActivity : AppCompatActivity() {
@@ -20,10 +21,11 @@ class OtpActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOtpBinding
     private lateinit var verificationID  : String
     private lateinit var phoneNumber: String
-
+    private lateinit var loadingDialog: LoadingDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.hide()
+        loadingDialog = LoadingDialog(this, "Loading Please Wait....")
         binding = ActivityOtpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         clickListeners()
@@ -44,6 +46,7 @@ class OtpActivity : AppCompatActivity() {
     }
 
     private fun extractNumber(){
+        loadingDialog.startLoading()
         if(binding.etNumber.text.toString().isNotEmpty()){
             phoneNumber = binding.etNumber.text.toString().trim()
             val options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
@@ -61,19 +64,19 @@ class OtpActivity : AppCompatActivity() {
     private var callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-//            loadingDialog.isDismiss()
+            loadingDialog.dismiss()
         }
 
         override fun onVerificationFailed(e: FirebaseException) {
             if (e is FirebaseAuthInvalidCredentialsException) {
-//                loadingDialog.isDismiss()
+                loadingDialog.dismiss()
                 Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
             } else if (e is FirebaseTooManyRequestsException) {
 
-//                loadingDialog.isDismiss()
+                loadingDialog.dismiss()
                 Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
             }
-//            loadingDialog.isDismiss()
+            loadingDialog.dismiss()
             Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
         }
 
@@ -81,7 +84,7 @@ class OtpActivity : AppCompatActivity() {
             verificationId: String,
             token: PhoneAuthProvider.ForceResendingToken
         ) {
-//            loadingDialog.isDismiss()
+            loadingDialog.dismiss()
             verificationID = verificationId
             binding.sendOtpView.visibility = View.GONE
             binding.enterOtpView.visibility = View.VISIBLE
@@ -90,12 +93,14 @@ class OtpActivity : AppCompatActivity() {
     }
 
     private fun verifyOtp(){
+        loadingDialog.startLoading()
         if(verificationID.isNotEmpty() && binding.etOtp.text.toString().isNotEmpty() ){
             val phoneAuthCredential = PhoneAuthProvider.getCredential(
                 verificationID, binding.etOtp.text.toString().trim()
             )
             signInInWithCredential(phoneAuthCredential)
         } else {
+            loadingDialog.dismiss()
             Snackbar.make(binding.root, "CHeck the OTP", Snackbar.LENGTH_LONG).show()
         }
     }
@@ -104,10 +109,14 @@ class OtpActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
             .addOnCompleteListener { task ->
                 if(task.isSuccessful){
+                    loadingDialog.dismiss()
                     checkDatabase()
+                } else {
+                    loadingDialog.dismiss()
                 }
             }
             .addOnFailureListener {
+                loadingDialog.dismiss()
                 Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
             }
     }

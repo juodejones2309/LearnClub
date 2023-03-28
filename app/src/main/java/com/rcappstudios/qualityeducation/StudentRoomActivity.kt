@@ -36,13 +36,15 @@ class StudentRoomActivity : AppCompatActivity() {
     )
     private val appId = "a9c7eed08a8a4e4bba648e6e6e879163"
     private val channelName = "1"
-    private val token = "007eJxTYNDXkre69oyh/NCawAeiaT6HrrxI1FxezBNW97zU3Kld/qACQ6JlsnlqaoqBRaJFokmqSVJSopmJRaoZEFqYWxqaGV/TkU5pCGRkcIzMYGRkgEAQn5HBkIEBAJl7HF0="
+    private val token = "007eJxTYHh0zmhumRibuchs7rgvpi8OzK2TfjaD37ghNio2YvWLx7wKDImWyeapqSkGFokWiSapJklJiWYmFqlmQGhhbmloZpzMIp/SEMjIMNtRjIERCkF8RgZDBgYAi6wbwg=="
     private val uid = 0
     private var isJoined = false
     private var agoraEngine: RtcEngine? = null
 
     companion object{
+        @JvmStatic
         var roomID : String = ""
+        @JvmStatic
         var hostID: String = ""
     }
 

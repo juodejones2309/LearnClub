@@ -3,6 +3,7 @@ package com.rcappstudios.qualityeducation.chatgpt.di
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.rcappstudios.qualityeducation.chatgpt.completion.api.CompletionAPIService
+import com.rcappstudios.qualityeducation.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,12 +23,11 @@ class RetrofitModule {
     @Provides
     @Singleton
     fun providesOkHttpClient(): OkHttpClient{
-        val token = "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"
         return OkHttpClient.Builder().addInterceptor(Interceptor { chain ->
             val newRequest: Request =
                 chain.request().newBuilder()
                 .header("Content-Type", "application/json")
-                .addHeader("Authorization", "Bearer $token")
+                .addHeader("Authorization", "Bearer ${Constants.CHAT_GPT_TOKEN}")
                 .build()
             chain.proceed(newRequest)
         }).build()

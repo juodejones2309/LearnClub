@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/_5sdp"
-    tools:context=".fragments.MockTestFillFragment">
+    tools:context=".fragments.mocktest.MockTestFillFragment">
 
     <TextView
         android:id="@+id/fill_test_title"

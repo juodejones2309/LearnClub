@@ -7,7 +7,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.rcappstudios.qualityeducation.chatgpt.completion.model.request.CompletionRequest
-import com.rcappstudios.qualityeducation.chatgpt.completion.repository.CompletionRemoteRepository
+import com.rcappstudios.qualityeducation.chatgpt.completion.model.repository.CompletionRemoteRepository
 import com.rcappstudios.qualityeducation.chatgpt.networkutils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

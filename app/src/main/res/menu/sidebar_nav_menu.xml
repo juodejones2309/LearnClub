@@ -16,5 +16,11 @@
         android:id="@+id/mockTestListFragment"
         android:icon="@drawable/baseline_mock_test"/>
 
+    <item
+        android:title="Ask Mentor"
+        android:id="@+id/mentorsFragment"
+        android:icon="@drawable/baseline_mentor"/>
+
+
 
 </menu>
