@@ -1,4 +1,4 @@
-package com.rcappstudios.qualityeducation.fragments.mocktest
+package com.rcappstudios.qualityeducation.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +11,6 @@ import androidx.navigation.fragment.navArgs
 import com.google.firebase.database.FirebaseDatabase
 import com.rcappstudios.qualityeducation.databinding.FragmentMockTestFillBinding
 import com.rcappstudios.qualityeducation.databinding.RowFillTestBinding
-
 import com.rcappstudios.qualityeducation.model.Field
 
 class MockTestFillFragment : Fragment() {
@@ -69,18 +68,17 @@ class MockTestFillFragment : Fragment() {
                     testBinding.fillTestEt.visibility = View.VISIBLE
                 }
                 RadioButton::class.simpleName -> {
-                    testBinding.fillTestEt.visibility = View.GONE
                     val rg = RadioGroup(requireContext())
                     rg.orientation = RadioGroup.VERTICAL
-                    llParams.leftMargin = 10
+                    llParams.leftMargin = 20
                     for (item in it.items!!) {
                         val rb = RadioButton(requireContext())
                         rb.text = item
+                        rb.textSize = 18F
                         rb.layoutParams = llParams
-                        rb.textSize = 15f
                         rg.addView(rb)
                     }
-                    rg.setOnCheckedChangeListener { _, id ->
+                    rg.setOnCheckedChangeListener { grp, id ->
 
                     }
                     testBinding.fillTestLl.addView(rg)
@@ -91,4 +89,7 @@ class MockTestFillFragment : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }
