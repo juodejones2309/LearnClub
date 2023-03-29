@@ -4,6 +4,8 @@ import javax.security.auth.Subject
 
 object Constants {
 
+    const val LANGUAGE: String = "language"
+
     const val SHARED_PREF = "shared_pref"
 
     const val GRADE = "grade"

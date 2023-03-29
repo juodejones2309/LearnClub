@@ -121,6 +121,9 @@ dependencies {
 
 //    implementation 'com.github.AgoraIO-Community.VideoUIKit-Android:final:v4.0.1'
     implementation 'androidx.browser:browser:1.2.0'
+
+    implementation 'com.google.mlkit:translate:17.0.1'
+
 }
 
 kapt {

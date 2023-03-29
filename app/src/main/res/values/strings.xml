@@ -19,4 +19,14 @@
     <string name="field_label">Field Label</string>
     <string name="radioBt_hint">Enter choices separated by comma \',\'</string>
     <string name="submit">Submit</string>
+
+    <string-array name="array_language">
+        <item>Select your language</item>
+        <item>தமிழ்</item>
+        <item>हिन्दी</item>
+        <item>English</item>
+        <item>తెలుగు</item>
+        <item>ਪੰਜਾਬ</item>
+    </string-array>
+
 </resources>
