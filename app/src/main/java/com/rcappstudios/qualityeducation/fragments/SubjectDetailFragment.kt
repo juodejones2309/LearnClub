@@ -63,7 +63,8 @@ class SubjectDetailFragment : Fragment() {
         }
 
         binding.peersExpand.setOnClickListener {
-            switchToFragment(R.id.peerLearningFragment)
+            val directions = SubjectDetailFragmentDirections.actionSubjectDetailFragmentToPeerLearningFragment(navArgs.subjectName.toString())
+            switchToCommentsFragment(directions, R.id.peerLearningFragment)
         }
 
         binding.createTest.setOnClickListener {
@@ -89,7 +90,7 @@ class SubjectDetailFragment : Fragment() {
     }
 
     private fun fetchRoomsList(){
-        FirebaseDatabase.getInstance().getReference("Room")
+        FirebaseDatabase.getInstance().getReference("Room/${navArgs.subjectName}")
             .get().addOnSuccessListener {
                 if(it.exists()){
                     val roomList = mutableListOf<RoomModel>()
