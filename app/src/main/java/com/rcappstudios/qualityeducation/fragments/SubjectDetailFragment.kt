@@ -11,7 +11,6 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.adapters.AskQuestionsAdapter
@@ -20,7 +19,6 @@ import com.rcappstudios.qualityeducation.adapters.PeerLearningAdapter
 import com.rcappstudios.qualityeducation.databinding.FragmentSubjectDetailBinding
 import com.rcappstudios.qualityeducation.model.QuestionModel
 import com.rcappstudios.qualityeducation.model.RoomModel
-import com.rcappstudios.qualityeducation.model.Test
 import com.rcappstudios.qualityeducation.utils.Constants
 import com.rcappstudios.qualityeducation.utils.LoadingDialog
 
@@ -59,23 +57,24 @@ class SubjectDetailFragment : Fragment() {
 
     private fun clickListener(){
         binding.doubtsExpand.setOnClickListener {
-            switchToFragment(R.id.askDoubtFragment)
+            val directions = SubjectDetailFragmentDirections.actionSubjectDetailFragmentToAskDoubtFragment(navArgs.subjectName.toString())
+            switchToFragment(directions, R.id.askDoubtFragment)
         }
 
         binding.peersExpand.setOnClickListener {
             val directions = SubjectDetailFragmentDirections.actionSubjectDetailFragmentToPeerLearningFragment(navArgs.subjectName.toString())
-            switchToCommentsFragment(directions, R.id.peerLearningFragment)
+            switchToFragment(directions, R.id.peerLearningFragment)
         }
 
         binding.createTest.setOnClickListener {
             val directions = SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMockTestCreateFragment(navArgs.subjectName.toString())
-            switchToCommentsFragment(directions, R.id.mockTestCreateFragment)
+            switchToFragment(directions, R.id.mockTestCreateFragment)
         }
     }
 
     private fun fetchDoubtsData(){
         FirebaseDatabase.getInstance()
-            .getReference("Questions")
+            .getReference("Groups/${navArgs.subjectName}/Questions")
             .get()
             .addOnSuccessListener {
                 if(it.exists()){
@@ -84,8 +83,8 @@ class SubjectDetailFragment : Fragment() {
                         questionsList.add(c.getValue(QuestionModel::class.java)!!)
                     }
                     initDoubtsRvAdapter(questionsList)
-                    loadingDialog.dismiss()
                 }
+                loadingDialog.dismiss()
             }
     }
 
@@ -98,8 +97,8 @@ class SubjectDetailFragment : Fragment() {
                         roomList.add(c.getValue(RoomModel::class.java)!!)
                     }
                     initRv(roomList)
-                    loadingDialog.dismiss()
                 }
+                loadingDialog.dismiss()
             }
     }
 
@@ -113,6 +112,7 @@ class SubjectDetailFragment : Fragment() {
                     }
                     initMockTestAdapter(testList)
                 }
+                loadingDialog.dismiss()
             }
     }
 
@@ -120,7 +120,7 @@ class SubjectDetailFragment : Fragment() {
         binding.mockTestRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.mockTestRecyclerView.adapter = MockTestAdapter(requireContext(),testList){int, test->
             val directions = SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMockTestFillFragment(navArgs.subjectName, test)
-            switchToCommentsFragment(directions, R.id.mockTestFillFragment)
+            switchToFragment(directions, R.id.mockTestFillFragment)
 //            SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMockTestFillFragment(navArgs.subjectName, test.name)
         }
     }
@@ -129,7 +129,7 @@ class SubjectDetailFragment : Fragment() {
         binding.rvDoubts.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvDoubts.adapter = AskQuestionsAdapter(requireContext(), questionsList){ flag, value->
             when(flag){
-                2 -> switchToCommentsFragment(
+                2 -> switchToFragment(
                     SubjectDetailFragmentDirections.actionSubjectDetailFragmentToCommentsFragment(value),
                     R.id.commentsFragment
                 )
@@ -149,22 +149,13 @@ class SubjectDetailFragment : Fragment() {
 
 
 
-    private fun switchToCommentsFragment(actions: NavDirections, destinationId: Int){
+    private fun switchToFragment(actions: NavDirections, destinationId: Int){
         if (isFragmentInBackStack(destinationId)) {
             getNavController().popBackStack(destinationId, false)
         } else {
             getNavController().navigate(actions)
         }
     }
-
-    private fun switchToFragment(destinationId: Int) {
-        if (isFragmentInBackStack(destinationId)) {
-            getNavController().popBackStack(destinationId, false)
-        } else {
-            getNavController().navigate(destinationId)
-        }
-    }
-
     private fun getNavController(): NavController {
         return (requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment).navController
     }

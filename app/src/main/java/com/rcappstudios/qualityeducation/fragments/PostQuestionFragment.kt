@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -37,6 +38,7 @@ import javax.security.auth.Subject
 class PostQuestionFragment : Fragment() {
 
     private lateinit var binding: FragmentPostQuestionBinding
+    private val navArgs: PostQuestionFragmentArgs by navArgs()
     private var dataCode: Int = 0
     private  var  imageUri : Uri?= null
     private lateinit var subjectName: String
@@ -139,7 +141,7 @@ class PostQuestionFragment : Fragment() {
     private fun storeToDatabase(imageUrl: String){
         val questionID = FirebaseDatabase.getInstance().reference.push().key
         if(imageUrl == ""){
-            FirebaseDatabase.getInstance().getReference("Questions/${questionID}")
+            FirebaseDatabase.getInstance().getReference("Groups/${navArgs.subjectName}/Questions/${questionID}")
                 .setValue(
                     QuestionModel(
                         question = binding.etQuestion.text.toString(),
@@ -154,7 +156,7 @@ class PostQuestionFragment : Fragment() {
                             loadingDialog.dismiss()
                 }
         } else {
-            FirebaseDatabase.getInstance().getReference("Questions/${questionID}")
+            FirebaseDatabase.getInstance().getReference("Groups/${navArgs.subjectName}/Questions/${questionID}")
                 .setValue(
                     QuestionModel(
                         question = binding.etQuestion.text.toString(),

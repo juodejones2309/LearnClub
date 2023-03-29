@@ -1,391 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.SelectSubjectFragment">
+    android:background="@drawable/gradient">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
 
-
-
-            <!--        <com.google.android.material.card.MaterialCardView-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:id="@+id/subject"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            app:cardCornerRadius="@dimen/_5sdp"-->
-            <!--            app:strokeColor="@color/black"-->
-            <!--            app:strokeWidth="@dimen/_2sdp"-->
-            <!--            android:layout_margin="@dimen/_10sdp"-->
-            <!--            app:layout_constraintEnd_toEndOf="parent">-->
-
-            <!--            <ImageView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="@dimen/_100sdp"-->
-            <!--                android:cropToPadding="true"-->
-            <!--                android:src="@drawable/chemistry"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                tools:layout_editor_absoluteY="98dp" />-->
-            <!--        </com.google.android.material.card.MaterialCardView>-->
-
-
-            <!--        <com.google.android.material.card.MaterialCardView-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            app:cardCornerRadius="@dimen/_5sdp"-->
-            <!--            app:strokeColor="@color/black"-->
-            <!--            app:strokeWidth="@dimen/_2sdp"-->
-            <!--            android:scaleType="fitXY"-->
-            <!--            android:layout_margin="@dimen/_10sdp"-->
-            <!--            app:layout_constraintEnd_toEndOf="parent">-->
-            <!--            <ImageView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="@dimen/_100sdp"-->
-            <!--                android:cropToPadding="true"-->
-            <!--                android:src="@drawable/english"-->
-            <!--                android:scaleType="fitXY"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                tools:layout_editor_absoluteY="98dp" />-->
-            <!--        </com.google.android.material.card.MaterialCardView>-->
-
-            <!--        <com.google.android.material.card.MaterialCardView-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            app:cardCornerRadius="@dimen/_5sdp"-->
-            <!--            app:strokeColor="@color/black"-->
-            <!--            app:strokeWidth="@dimen/_2sdp"-->
-            <!--            android:scaleType="fitXY"-->
-            <!--            android:layout_margin="@dimen/_10sdp"-->
-            <!--            app:layout_constraintEnd_toEndOf="parent">-->
-            <!--            <ImageView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="@dimen/_100sdp"-->
-            <!--                android:cropToPadding="true"-->
-            <!--                android:src="@drawable/maths"-->
-            <!--                android:scaleType="fitXY"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                tools:layout_editor_absoluteY="98dp" />-->
-            <!--        </com.google.android.material.card.MaterialCardView>-->
-
-            <!--        <com.google.android.material.card.MaterialCardView-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            app:cardCornerRadius="@dimen/_5sdp"-->
-            <!--            app:strokeColor="@color/black"-->
-            <!--            app:strokeWidth="@dimen/_2sdp"-->
-            <!--            android:scaleType="fitXY"-->
-            <!--            android:layout_margin="@dimen/_10sdp"-->
-            <!--            app:layout_constraintEnd_toEndOf="parent">-->
-            <!--            <ImageView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="@dimen/_100sdp"-->
-            <!--                android:cropToPadding="true"-->
-            <!--                android:src="@drawable/physics"-->
-            <!--                android:scaleType="fitXY"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                tools:layout_editor_absoluteY="98dp" />-->
-            <!--        </com.google.android.material.card.MaterialCardView>-->
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/subject"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                app:cardCornerRadius="@dimen/_10sdp"
-                app:cardElevation="@dimen/_10sdp"
-                >
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Physics"
-                    android:fontFamily="@font/mplus_rounded_1c_extra_bold"
-                    android:textColor="@color/black"
-                    android:textAlignment="center"
-                    android:padding="@dimen/_10sdp"
-                    android:textSize="@dimen/_20sdp"/>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                app:cardCornerRadius="@dimen/_10sdp"
-                app:cardElevation="@dimen/_10sdp"
-                >
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Chemistry"
-                    android:fontFamily="@font/mplus_rounded_1c_extra_bold"
-                    android:textColor="@color/black"
-                    android:textAlignment="center"
-                    android:padding="@dimen/_10sdp"
-                    android:textSize="@dimen/_20sdp"/>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                app:cardCornerRadius="@dimen/_10sdp"
-                app:cardElevation="@dimen/_10sdp"
-                >
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Maths"
-                    android:fontFamily="@font/mplus_rounded_1c_extra_bold"
-                    android:textColor="@color/black"
-                    android:textAlignment="center"
-                    android:padding="@dimen/_10sdp"
-                    android:textSize="@dimen/_20sdp"/>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                app:cardCornerRadius="@dimen/_10sdp"
-                app:cardElevation="@dimen/_10sdp"
-                >
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="English"
-                    android:fontFamily="@font/mplus_rounded_1c_extra_bold"
-                    android:textColor="@color/black"
-                    android:textAlignment="center"
-                    android:padding="@dimen/_10sdp"
-                    android:textSize="@dimen/_20sdp"/>
-
-            </com.google.android.material.card.MaterialCardView>
-
-
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </ScrollView>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-
-        android:layout_height="match_parent">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mplus_rounded_1c_bold"
+                android:padding="@dimen/_10sdp"
+                android:text="Select a Subject"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"/>
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:scrollbars="none"
+                android:scrollIndicators="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/chemistry"
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="@dimen/_75sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/subject_background"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/scienceImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/btn_1" />
+
+                        <TextView
+                            android:id="@+id/scienceText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="Chemistry"
+                            android:textAlignment="center"
+                            android:textColor="#ffffff" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/physics"
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="@dimen/_75sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/subject_background"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/btn_2" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="Physics"
+                            android:textAlignment="center"
+                            android:textColor="#ffffff" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/social"
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="@dimen/_75sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/subject_background"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/socialImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:padding="5dp"
+                            app:srcCompat="@drawable/btn_3" />
+
+                        <TextView
+                            android:id="@+id/socialText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="Social"
+                            android:textAlignment="center"
+                            android:textColor="#ffffff" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/computer"
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="@dimen/_75sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/subject_background"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/computerImage"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/btn_6" />
+
+                        <TextView
+                            android:id="@+id/computerText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="Economies"
+                            android:textAlignment="center"
+                            android:textColor="#ffffff" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/maths"
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="@dimen/_75sdp"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:background="@drawable/subject_background"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/mathsImage"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/calculator" />
+
+                        <TextView
+                            android:id="@+id/mathsText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="Maths"
+                            android:textAlignment="center"
+                            android:textColor="#ffffff" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/subject_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                tools:listitem="@layout/item_subject_rv" />
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_cls_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:contentDescription="mpt"
-            android:src="@drawable/baseline_add_room" />
-    </RelativeLayout>
+            android:src="@drawable/baseline_add_room"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_20sdp"/>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <include
+        android:id="@+id/bottomSheet"
+        layout="@layout/create_room_bottom_sheet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-<!--    <androidx.appcompat.widget.LinearLayoutCompat-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:orientation="vertical"-->
-<!--        android:layout_height="match_parent">-->
-<!--        -->
-<!--        -->
-
-<!--&lt;!&ndash;        <com.google.android.material.card.MaterialCardView&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:id="@+id/subject"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:cardCornerRadius="@dimen/_5sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:strokeColor="@color/black"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:strokeWidth="@dimen/_2sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_margin="@dimen/_10sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:layout_constraintEnd_toEndOf="parent">&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_height="@dimen/_100sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:cropToPadding="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:src="@drawable/chemistry"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                tools:layout_editor_absoluteY="98dp" />&ndash;&gt;-->
-<!--&lt;!&ndash;        </com.google.android.material.card.MaterialCardView>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;        <com.google.android.material.card.MaterialCardView&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:cardCornerRadius="@dimen/_5sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:strokeColor="@color/black"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:strokeWidth="@dimen/_2sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:scaleType="fitXY"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_margin="@dimen/_10sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:layout_constraintEnd_toEndOf="parent">&ndash;&gt;-->
-<!--&lt;!&ndash;            <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_height="@dimen/_100sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:cropToPadding="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:src="@drawable/english"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:scaleType="fitXY"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                tools:layout_editor_absoluteY="98dp" />&ndash;&gt;-->
-<!--&lt;!&ndash;        </com.google.android.material.card.MaterialCardView>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <com.google.android.material.card.MaterialCardView&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:cardCornerRadius="@dimen/_5sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:strokeColor="@color/black"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:strokeWidth="@dimen/_2sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:scaleType="fitXY"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_margin="@dimen/_10sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:layout_constraintEnd_toEndOf="parent">&ndash;&gt;-->
-<!--&lt;!&ndash;            <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_height="@dimen/_100sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:cropToPadding="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:src="@drawable/maths"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:scaleType="fitXY"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                tools:layout_editor_absoluteY="98dp" />&ndash;&gt;-->
-<!--&lt;!&ndash;        </com.google.android.material.card.MaterialCardView>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <com.google.android.material.card.MaterialCardView&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:cardCornerRadius="@dimen/_5sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:strokeColor="@color/black"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:strokeWidth="@dimen/_2sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:scaleType="fitXY"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_margin="@dimen/_10sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:layout_constraintEnd_toEndOf="parent">&ndash;&gt;-->
-<!--&lt;!&ndash;            <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:layout_height="@dimen/_100sdp"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:cropToPadding="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:src="@drawable/physics"&ndash;&gt;-->
-<!--&lt;!&ndash;                android:scaleType="fitXY"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                tools:layout_editor_absoluteY="98dp" />&ndash;&gt;-->
-<!--&lt;!&ndash;        </com.google.android.material.card.MaterialCardView>&ndash;&gt;-->
-<!--        -->
-<!--        <com.google.android.material.card.MaterialCardView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="@dimen/_10sdp"-->
-<!--            app:cardCornerRadius="@dimen/_10sdp"-->
-<!--            app:cardElevation="@dimen/_10sdp"-->
-<!--            >-->
-<!--            <androidx.appcompat.widget.AppCompatTextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Physics"-->
-<!--                android:fontFamily="@font/mplus_rounded_1c_extra_bold"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textAlignment="center"-->
-<!--                android:padding="@dimen/_10sdp"-->
-<!--                android:textSize="@dimen/_20sdp"/>-->
-<!--                -->
-<!--        </com.google.android.material.card.MaterialCardView>-->
-
-<!--        <com.google.android.material.card.MaterialCardView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="@dimen/_10sdp"-->
-<!--            app:cardCornerRadius="@dimen/_10sdp"-->
-<!--            app:cardElevation="@dimen/_10sdp"-->
-<!--            >-->
-<!--            <androidx.appcompat.widget.AppCompatTextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Chemistry"-->
-<!--                android:fontFamily="@font/mplus_rounded_1c_extra_bold"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textAlignment="center"-->
-<!--                android:padding="@dimen/_10sdp"-->
-<!--                android:textSize="@dimen/_20sdp"/>-->
-
-<!--        </com.google.android.material.card.MaterialCardView>-->
-
-<!--        <com.google.android.material.card.MaterialCardView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="@dimen/_10sdp"-->
-<!--            app:cardCornerRadius="@dimen/_10sdp"-->
-<!--            app:cardElevation="@dimen/_10sdp"-->
-<!--            >-->
-<!--            <androidx.appcompat.widget.AppCompatTextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Maths"-->
-<!--                android:fontFamily="@font/mplus_rounded_1c_extra_bold"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textAlignment="center"-->
-<!--                android:padding="@dimen/_10sdp"-->
-<!--                android:textSize="@dimen/_20sdp"/>-->
-
-<!--        </com.google.android.material.card.MaterialCardView>-->
-
-<!--        <com.google.android.material.card.MaterialCardView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_margin="@dimen/_10sdp"-->
-<!--            app:cardCornerRadius="@dimen/_10sdp"-->
-<!--            app:cardElevation="@dimen/_10sdp"-->
-<!--            >-->
-<!--            <androidx.appcompat.widget.AppCompatTextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="English"-->
-<!--                android:fontFamily="@font/mplus_rounded_1c_extra_bold"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textAlignment="center"-->
-<!--                android:padding="@dimen/_10sdp"-->
-<!--                android:textSize="@dimen/_20sdp"/>-->
-
-<!--        </com.google.android.material.card.MaterialCardView>-->
-
-<!--       <RelativeLayout-->
-<!--           android:layout_width="match_parent"-->
-<!--           -->
-<!--           android:layout_height="match_parent">-->
-
-<!--           <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--               android:layout_width="wrap_content"-->
-<!--               android:layout_height="wrap_content"-->
-<!--               android:layout_alignParentBottom="true"-->
-<!--               android:layout_alignParentEnd="true"-->
-<!--               android:layout_marginStart="@dimen/_10sdp"-->
-<!--               android:layout_marginTop="@dimen/_10sdp"-->
-<!--               android:layout_marginEnd="@dimen/_10sdp"-->
-<!--               android:layout_marginBottom="@dimen/_10sdp"-->
-<!--               android:contentDescription="mpt"-->
-<!--               android:src="@drawable/baseline_add_room" />-->
-<!--       </RelativeLayout>-->
-
-<!--    </androidx.appcompat.widget.LinearLayoutCompat>-->
-
-
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
