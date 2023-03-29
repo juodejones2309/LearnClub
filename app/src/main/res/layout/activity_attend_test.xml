@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_5sdp"
+    tools:context=".fragments.mocktest.MockTestFillFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rlTestTitle"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/test_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test Name"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_7sdp"
+            android:textSize="@dimen/_15ssp" />
+
+        <ir.samanjafari.easycountdowntimer.EasyCountDownTextview
+            android:id="@+id/easyCountDownTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:colonColor="#000"
+            app:digitBackground="@android:color/transparent"
+            app:setAnimation="true"
+            app:minute="6"
+            app:showDays="false"
+            app:showOnlySecond="true"
+            app:start_automatically="true"
+            app:textColor="#0E0EE0"
+            app:textSize="@dimen/_16ssp" />
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/submit_button"
+        android:layout_below="@+id/rlTestTitle">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

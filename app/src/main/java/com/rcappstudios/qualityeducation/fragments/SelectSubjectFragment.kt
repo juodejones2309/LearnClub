@@ -11,11 +11,15 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.mlkit.nl.translate.Translator
 import com.rcappstudios.qualityeducation.R
+import com.rcappstudios.qualityeducation.adapters.SubjectAdapter
 import com.rcappstudios.qualityeducation.databinding.FragmentSelectSubjectBinding
 import com.rcappstudios.qualityeducation.chatgpt.ui.ChatGptActivity
 
@@ -23,7 +27,7 @@ class SelectSubjectFragment : Fragment() {
 
     private lateinit var binding: FragmentSelectSubjectBinding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
-    private lateinit var translator : Translator
+    private lateinit var subjectAdapter: SubjectAdapter
 
     override fun onCreateView(
 
@@ -39,7 +43,34 @@ class SelectSubjectFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheet.root)
+        binding.subjectRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+        initSubjectRv()
         clickListener()
+    }
+
+    private fun initSubjectRv() {
+       /* FirebaseDatabase.getInstance().getReference("Groups")
+            .addChildEventListener(object : ChildEventListener {
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onChildRemoved(snapshot: DataSnapshot) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })*/
     }
 
     private fun clickListener(){

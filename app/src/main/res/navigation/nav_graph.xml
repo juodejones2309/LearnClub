@@ -131,4 +131,9 @@
         android:name="com.rcappstudios.qualityeducation.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/testGameFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.TestGameFragment"
+        android:label="fragment_test_game"
+        tools:layout="@layout/fragment_test_game" />
 </navigation>

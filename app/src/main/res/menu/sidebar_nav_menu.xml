@@ -26,5 +26,9 @@
         android:id="@+id/profileFragment"
         android:icon="@drawable/baseline_mentor"/>
 
+    <item
+        android:title="Quantitative Test"
+        android:id="@+id/testGameFragment"
+        android:icon="@drawable/baseline_test"/>
 
 </menu>

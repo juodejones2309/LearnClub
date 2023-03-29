@@ -19,7 +19,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
 
     <application
-        android:name="com.rcappstudios.qualityeducation.chatgpt.App"
+        android:name=".chatgpt.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -28,6 +28,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QualityEducation"
         tools:targetApi="31">
+        <activity
+            android:name=".AttendTestActivity"
+            android:exported="false" />
         <activity
             android:name=".fragments.mentors.MentorViewMessagesActivity"
             android:exported="false" />
@@ -50,7 +53,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name="com.rcappstudios.qualityeducation.chatgpt.ui.ChatGptActivity"
+            android:name=".chatgpt.ui.ChatGptActivity"
             android:exported="false" />
     </application>
 
