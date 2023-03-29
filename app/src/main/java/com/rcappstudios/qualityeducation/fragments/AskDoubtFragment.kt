@@ -11,10 +11,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 import com.rcappstudio.indoorfarming.api.RetrofitInstance
 import com.rcappstudio.placesapi.youtubeDataModel.YoutubeResults
 import com.rcappstudios.qualityeducation.R
@@ -32,6 +32,7 @@ class AskDoubtFragment : Fragment() {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private lateinit var binding: FragmentAskDoubtBinding
     private lateinit var adapter: AskQuestionsAdapter
+    private val navArgs: AskDoubtFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +53,7 @@ class AskDoubtFragment : Fragment() {
 
     private fun fetchData(){
         FirebaseDatabase.getInstance()
-            .getReference("Questions")
+            .getReference("Groups/${navArgs.subjectName}/Questions")
             .get()
             .addOnSuccessListener {
                 if(it.exists()){
@@ -69,7 +70,7 @@ class AskDoubtFragment : Fragment() {
         binding.rvQuestions.layoutManager = LinearLayoutManager(requireContext())
         binding.rvQuestions.adapter = AskQuestionsAdapter(requireContext(), questionsList){ flag, value->
             when(flag){
-                2 -> switchToCommentsFragment(
+                2 -> switchToFragment(
                     AskDoubtFragmentDirections.actionAskDoubtFragmentToCommentsFragment(value),
                     R.id.commentsFragment
                 )
@@ -81,11 +82,12 @@ class AskDoubtFragment : Fragment() {
 
     private fun clickListener(){
         binding.fabAddQuestion.setOnClickListener {
-            switchToFragment(R.id.postQuestionFragment)
+            val action = AskDoubtFragmentDirections.actionAskDoubtFragmentToPostQuestionFragment(navArgs.subjectName)
+            switchToFragment(action, R.id.postQuestionFragment)
         }
     }
 
-    fun switchToCommentsFragment(actions: NavDirections, destinationId: Int){
+    fun switchToFragment(actions: NavDirections, destinationId: Int){
         if (isFragmentInBackStack(destinationId)) {
             getNavController().popBackStack(destinationId, false)
         } else {
@@ -95,14 +97,6 @@ class AskDoubtFragment : Fragment() {
 
     private fun getNavController(): NavController {
         return (requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment).navController
-    }
-
-    private fun switchToFragment(destinationId: Int) {
-        if (isFragmentInBackStack(destinationId)) {
-            getNavController().popBackStack(destinationId, false)
-        } else {
-            getNavController().navigate(destinationId)
-        }
     }
 
     private fun isFragmentInBackStack(destinationId: Int) =

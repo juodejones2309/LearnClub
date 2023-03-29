@@ -18,8 +18,11 @@
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_in_left" />
         <argument
-            android:name="questionID"
+            android:name="subjectName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_askDoubtFragment_to_postQuestionFragment"
+            app:destination="@id/postQuestionFragment" />
     </fragment>
     <fragment
         android:id="@+id/peerLearningFragment"
@@ -35,7 +38,11 @@
         android:id="@+id/postQuestionFragment"
         android:name="com.rcappstudios.qualityeducation.fragments.PostQuestionFragment"
         android:label="fragment_post_question"
-        tools:layout="@layout/fragment_post_question" />
+        tools:layout="@layout/fragment_post_question" >
+        <argument
+            android:name="subjectName"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/commentsFragment"
         android:name="com.rcappstudios.qualityeducation.fragments.CommentsFragment"
@@ -81,6 +88,9 @@
         <action
             android:id="@+id/action_subjectDetailFragment_to_peerLearningFragment"
             app:destination="@id/peerLearningFragment" />
+        <action
+            android:id="@+id/action_subjectDetailFragment_to_askDoubtFragment"
+            app:destination="@id/askDoubtFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatGptFragment"

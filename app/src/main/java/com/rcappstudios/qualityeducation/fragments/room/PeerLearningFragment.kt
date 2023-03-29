@@ -79,7 +79,6 @@ class PeerLearningFragment : Fragment() {
 
     private fun createRoom(){
         val pushKey = FirebaseDatabase.getInstance().getReference("Room/${navArgs.subject}").push().key
-
         FirebaseDatabase.getInstance().getReference("Room/${navArgs.subject}/$pushKey")
             .setValue(
                 RoomModel(

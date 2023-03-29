@@ -15,7 +15,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.databinding.FragmentMockTestFillBinding
 import com.rcappstudios.qualityeducation.databinding.RowFillTestBinding
-import com.rcappstudios.qualityeducation.fragments.mocktest.MockTestFillFragmentArgs
 import com.rcappstudios.qualityeducation.model.Field
 import com.rcappstudios.qualityeducation.model.StudentData
 import com.rcappstudios.qualityeducation.model.Test
@@ -30,15 +29,12 @@ class MockTestFillFragment : Fragment() {
     private var radioSelected: String = ""
     private var testFields: List<Field> = mutableListOf()
     private var llParams = LinearLayout.LayoutParams(
-        LinearLayout.LayoutParams.MATCH_PARENT,
-        LinearLayout.LayoutParams.WRAP_CONTENT
+        LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
     )
 
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
         binding = FragmentMockTestFillBinding.inflate(inflater, container, false)
@@ -58,9 +54,9 @@ class MockTestFillFragment : Fragment() {
 
     private fun updateStudentDB(score: Int) {
         var student: StudentData? = null
-        FirebaseDatabase.getInstance().getReference("Students/" +
-                "${FirebaseAuth.getInstance().currentUser?.uid}").get()
-            .addOnSuccessListener {
+        FirebaseDatabase.getInstance().getReference(
+            "Students/" + "${FirebaseAuth.getInstance().currentUser?.uid}"
+        ).get().addOnSuccessListener {
                 if (it.exists()) {
                     student = it.getValue(StudentData::class.java)
                     student!!.testAttended = student!!.testAttended!! + 1
@@ -76,10 +72,11 @@ class MockTestFillFragment : Fragment() {
             Log.d("StudentSimulation", "updateStudentDB: ${student!!.name}")
             student!!.testAttended = student!!.testAttended!! + 1
             if (score > 0) {
-                student!!.score = student!!.score!! + score
+                student!!.score = student!!.score!! + score*10
             }
-            FirebaseDatabase.getInstance().getReference("Students/" +
-                    "${FirebaseAuth.getInstance().currentUser?.uid}").setValue(student)
+            FirebaseDatabase.getInstance().getReference(
+                "Students/" + "${FirebaseAuth.getInstance().currentUser?.uid}"
+            ).setValue(student)
         }*/
     }
 
@@ -100,9 +97,7 @@ class MockTestFillFragment : Fragment() {
     }
 
     private fun getTest() {
-        FirebaseDatabase.getInstance()
-            .getReference("Test/$subject/${testName}")
-            .get()
+        FirebaseDatabase.getInstance().getReference("Test/$subject/${testName}").get()
             .addOnSuccessListener {
                 if (it.exists()) {
 /*
@@ -116,14 +111,13 @@ class MockTestFillFragment : Fragment() {
                     }
 */
                     val t = it.getValue(Test::class.java)
-                    if (t!=null) test = t
+                    if (t != null) test = t
                     testFields = t?.fields!!
                     if (testFields.isNotEmpty()) {
                         addFields()
                     }
                 }
-            }
-            .addOnFailureListener {
+            }.addOnFailureListener {
                 Log.d("MYTAG", "onFailure: $it")
             }
 
@@ -153,9 +147,9 @@ class MockTestFillFragment : Fragment() {
                     }
                     testBinding.fillTestRg.setOnCheckedChangeListener { grp, id ->
                         val items = it.items
-                        var cId = id%items.size
-                        if (cId==0) cId=items.size
-                        radioSelected = items[cId-1 ]
+                        var cId = id % items.size
+                        if (cId == 0) cId = items.size
+                        radioSelected = items[cId - 1]
                         Log.d("MyTagData", "addFields: $radioSelected")
                     }
                 }

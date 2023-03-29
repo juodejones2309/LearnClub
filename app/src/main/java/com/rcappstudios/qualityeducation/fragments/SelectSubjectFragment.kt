@@ -6,9 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.databinding.FragmentSelectSubjectBinding
 import com.rcappstudios.qualityeducation.chatgpt.ui.ChatGptActivity
@@ -16,6 +21,7 @@ import com.rcappstudios.qualityeducation.chatgpt.ui.ChatGptActivity
 class SelectSubjectFragment : Fragment() {
 
     private lateinit var binding: FragmentSelectSubjectBinding
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     override fun onCreateView(
 
@@ -30,11 +36,12 @@ class SelectSubjectFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheet.root)
         clickListener()
     }
 
     private fun clickListener(){
-        binding.subject.setOnClickListener {
+        binding.physics.setOnClickListener {
             switchToSubjectDetail(
                 SelectSubjectFragmentDirections
                     .actionSelectSubjectFragmentToSubjectDetailFragment
@@ -42,7 +49,80 @@ class SelectSubjectFragment : Fragment() {
                 R.id.subjectDetailFragment)
         }
 
+        binding.chemistry.setOnClickListener {
+            switchToSubjectDetail(
+                SelectSubjectFragmentDirections
+                    .actionSelectSubjectFragmentToSubjectDetailFragment
+                        ("Chemistry"),
+                R.id.subjectDetailFragment)
+        }
 
+        binding.maths.setOnClickListener {
+            switchToSubjectDetail(
+                SelectSubjectFragmentDirections
+                    .actionSelectSubjectFragmentToSubjectDetailFragment
+                        ("Maths"),
+                R.id.subjectDetailFragment)
+        }
+
+        binding.computer.setOnClickListener {
+            switchToSubjectDetail(
+                SelectSubjectFragmentDirections
+                    .actionSelectSubjectFragmentToSubjectDetailFragment
+                        ("Computer"),
+                R.id.subjectDetailFragment)
+        }
+
+        binding.social.setOnClickListener {
+            switchToSubjectDetail(
+                SelectSubjectFragmentDirections
+                    .actionSelectSubjectFragmentToSubjectDetailFragment
+                        ("Social"),
+                R.id.subjectDetailFragment)
+        }
+
+        binding.addClsFab.setOnClickListener{
+            initBottomSheet()
+        }
+
+        binding.bottomSheet.btnCreateRoom.setOnClickListener {
+            extractDetails()
+        }
+
+    }
+
+    private fun initBottomSheet(){
+        binding.bottomSheet.textRoomTitle.setText("Enter Group title")
+//        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        val state = if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+            BottomSheetBehavior.STATE_COLLAPSED
+        } else {
+            //TODO : Setup api call and recycler view adapter
+            BottomSheetBehavior.STATE_EXPANDED
+        }
+        bottomSheetBehavior.state = state
+    }
+
+
+    private fun extractDetails(){
+        val title = binding.bottomSheet.roomTitle.text.toString().trim()
+        if(title != ""){
+            createClass(title)
+        } else {
+            Toast.makeText(requireContext(), "Please fill the details", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun createClass(subject: String) {
+        FirebaseDatabase.getInstance().getReference("Groups/$subject/creatorId")
+            .setValue(FirebaseAuth.getInstance().currentUser!!.uid)
+            .addOnSuccessListener {
+                switchToSubjectDetail(
+                    SelectSubjectFragmentDirections
+                        .actionSelectSubjectFragmentToSubjectDetailFragment
+                            (subject),
+                    R.id.subjectDetailFragment)
+            }
     }
 
     private fun switchToSubjectDetail(actions: NavDirections, destinationId: Int){
@@ -60,7 +140,6 @@ class SelectSubjectFragment : Fragment() {
 
     private fun isFragmentInBackStack(destinationId: Int) =
         try {
-
             getNavController().getBackStackEntry(destinationId)
             true
         } catch (e: Exception) {
