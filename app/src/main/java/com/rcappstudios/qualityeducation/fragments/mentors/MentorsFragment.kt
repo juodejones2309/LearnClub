@@ -1,7 +1,9 @@
 package com.rcappstudios.qualityeducation.fragments.mentors
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -54,6 +56,7 @@ class MentorsFragment : Fragment() {
                 if(it.exists()){
                     val list = mutableListOf<MentorData>()
                     for(c in it.children){
+//                        Log.d("TAGData", "fetchMentorDetails: ")
                         list.add(c.getValue(MentorData::class.java)!!)
                     }
                     showDialog(list)
@@ -74,9 +77,11 @@ class MentorsFragment : Fragment() {
             requireContext(),
             mentorList
         ){mentorUserId->
-
+            val intent = Intent(requireActivity(), MentorSupportActivity::class.java)
+            intent.putExtra("mentorUserId", mentorUserId)
+            intent.putExtra("subject",subject)
+            requireActivity().startActivity(intent)
         }
-
         dialog.show()
     }
 

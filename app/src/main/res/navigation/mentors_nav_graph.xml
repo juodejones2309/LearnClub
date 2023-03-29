@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mentors_nav_graph"
+    app:startDestination="@id/mentorChatFragment">
+
+    <fragment
+        android:id="@+id/mentorChatFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.mentors.MentorChatFragment"
+        android:label="fragment_mentor_chat"
+        tools:layout="@layout/fragment_mentor_chat" />
+    <fragment
+        android:id="@+id/mentorWhiteBoardFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.mentors.MentorWhiteBoardFragment"
+        android:label="fragment_mentor_white_board"
+        tools:layout="@layout/fragment_mentor_white_board" />
+    <fragment
+        android:id="@+id/mentorVideoFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.mentors.MentorVideoFragment"
+        android:label="fragment_mentor_video"
+        tools:layout="@layout/fragment_mentor_video" />
+</navigation>

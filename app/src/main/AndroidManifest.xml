@@ -11,14 +11,12 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <uses-feature android:name="android.hardware.camera" />
 
-
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-
     <uses-permission android:name="android.permission.BLUETOOTH" />
-
 
     <application
         android:name="com.rcappstudios.qualityeducation.chatgpt.App"
@@ -31,10 +29,14 @@
         android:theme="@style/Theme.QualityEducation"
         tools:targetApi="31">
         <activity
+            android:name=".fragments.mentors.MentorViewMessagesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragments.mentors.MentorSupportActivity"
+            android:exported="false" />
+        <activity
             android:name=".StudentRoomActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".OtpActivity"
             android:exported="true">
@@ -46,10 +48,10 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name="com.rcappstudios.qualityeducation.chatgpt.ui.ChatGptActivity"
-            android:exported="false"/>
+            android:exported="false" />
     </application>
 
 </manifest>

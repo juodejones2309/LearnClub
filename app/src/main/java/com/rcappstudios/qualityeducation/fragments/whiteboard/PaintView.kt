@@ -46,7 +46,7 @@ class PaintView : View {
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
 
-    fun init( roomId: String,activity: Activity) {
+    fun initRoom( roomId: String,activity: Activity) {
         paths = ArrayList()
         paintScreen = Paint()
         paintLine = Paint()
@@ -63,6 +63,26 @@ class PaintView : View {
         this.roomId = roomId
         pathReference = FirebaseDatabase.getInstance().getReference("Room/$roomId/whiteBoard")
 //        this.viewModel = viewModel
+//        this.viewModel.getPathData()
+    }
+
+    fun initMentor(subject: String,mentorUserID: String, studentUserId: String , activity: Activity){
+        paths = ArrayList()
+        paintScreen = Paint()
+        paintLine = Paint()
+        paintLine!!.isAntiAlias = true
+        paintLine!!.color = Color.parseColor("black")
+        paintLine!!.strokeWidth = 14f
+        paintLine!!.style = Paint.Style.STROKE
+        paintLine!!.strokeCap = Paint.Cap.ROUND
+        paintLine!!.strokeJoin = Paint.Join.ROUND
+        brushPropertiesFlag = false
+        blurFlag = false
+        endTouchFlag = false
+        this.activity = activity
+
+        pathReference = FirebaseDatabase.getInstance().getReference("Mentors/$subject/$mentorUserID/connections/$studentUserId/whiteBoard")
+    //        this.viewModel = viewModel
 //        this.viewModel.getPathData()
     }
 
@@ -83,6 +103,11 @@ class PaintView : View {
                 paintLine!!.color = path.color
                 paintLine!!.strokeWidth = path.strokeWidth.toFloat()
                 canvas.drawPath(path.path, paintLine!!)
+            }
+            for (fp in pathList) {
+                paintLine!!.color = fp.color
+                paintLine!!.strokeWidth = fp.strokeWidth.toFloat()
+                canvas.drawPath(fp.path, paintLine!!)
             }
         } else {
             //For seeing (Opponent turn)
@@ -197,7 +222,7 @@ class PaintView : View {
     }
 
     fun pathUpdateListener() {
-        if (!myTurn) {
+        if (true) {//->here
             pathReference.addChildEventListener(object : ChildEventListener {
                 override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
                     val segment = dataSnapshot.getValue(
@@ -230,7 +255,7 @@ class PaintView : View {
         screenWidth: Int,
         screenHeight: Int
     ) {
-        if (!myTurn) {
+        if (true) {//->here
             var currentPoint = segmentPoints[0]
             var nextPoint: Point? = null
             val widthScale: Float =
