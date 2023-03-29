@@ -29,12 +29,6 @@ class CommentsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Log.d("TAGData", "onViewCreated: ${args.questionID}")
 
-        binding.btnSend.setOnClickListener {
-            val cmtText = binding.etComment.text.toString().trim()
-            if (cmtText.isNotEmpty() && cmtText.isNotBlank()) {
-
-            }
-        }
     }
 
 }
