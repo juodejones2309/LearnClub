@@ -31,4 +31,9 @@
         android:id="@+id/testGameFragment"
         android:icon="@drawable/baseline_test"/>
 
+    <item
+        android:title="LeaderBoard"
+        android:id="@+id/leaderBoardFragment"
+        android:icon="@drawable/baseline_test"/>
+
 </menu>

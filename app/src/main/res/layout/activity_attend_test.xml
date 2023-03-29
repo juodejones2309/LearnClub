@@ -31,10 +31,10 @@
             android:layout_marginStart="@dimen/_10sdp"
             app:colonColor="#000"
             app:digitBackground="@android:color/transparent"
-            app:setAnimation="true"
             app:minute="6"
+            app:setAnimation="true"
             app:showDays="false"
-            app:showOnlySecond="true"
+            app:showOnlySecond="false"
             app:start_automatically="true"
             app:textColor="#0E0EE0"
             app:textSize="@dimen/_16ssp" />
