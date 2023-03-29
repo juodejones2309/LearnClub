@@ -46,6 +46,8 @@ class StudentRoomActivity : AppCompatActivity() {
         var roomID : String = ""
         @JvmStatic
         var hostID: String = ""
+        @JvmStatic
+        var subject: String = ""
     }
 
 
@@ -80,11 +82,11 @@ class StudentRoomActivity : AppCompatActivity() {
         binding = ActivityStudentRoomBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar!!.hide()
-        init()
-
         setUpBottomNavigation()
         roomID = intent.getStringExtra("RoomId")!!
         hostID = intent.getStringExtra("hostID")!!
+        subject = intent.getStringExtra("Subject")!!
+        init()
         Log.d("RoomID", "onCreate:activity $roomID")
         binding.bottomBar.setItemSelected(R.id.roomWhiteBoard)
 
@@ -164,7 +166,7 @@ class StudentRoomActivity : AppCompatActivity() {
 
     private fun fetchMatesDetails(){
         //TODO: Change the room id
-        FirebaseDatabase.getInstance().getReference("Room/-NQtlKL0du600SeiAvE9/mates")
+        FirebaseDatabase.getInstance().getReference("Room/${subject}/${roomID}/mates")
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if(snapshot.exists()){
@@ -212,7 +214,7 @@ class StudentRoomActivity : AppCompatActivity() {
             agoraEngine = null
         }.start()
 
-        FirebaseDatabase.getInstance().getReference("Room/${roomID}/mates/${ FirebaseAuth.getInstance().uid}")
+        FirebaseDatabase.getInstance().getReference("Room/$subject/${roomID}/mates/${ FirebaseAuth.getInstance().uid}")
             .removeValue()
     }
 

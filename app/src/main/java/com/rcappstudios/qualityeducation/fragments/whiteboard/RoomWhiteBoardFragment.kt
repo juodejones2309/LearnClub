@@ -31,7 +31,7 @@ class RoomWhiteBoardFragment : Fragment() {
     }
 
     private fun initWhiteBoard(hostID: String){
-        binding.paintView.initRoom(StudentRoomActivity.roomID, requireActivity())
+        binding.paintView.initRoom(StudentRoomActivity.roomID, StudentRoomActivity.subject ,requireActivity())
         Log.d("TAGData", "initWhiteBoard: $hostID")
         if(hostID == FirebaseAuth.getInstance().uid){
             binding.paintView.myTurn = true
@@ -40,7 +40,7 @@ class RoomWhiteBoardFragment : Fragment() {
     }
 
     private fun getRoomData(){
-        FirebaseDatabase.getInstance().getReference("Room/${StudentRoomActivity.roomID}/hostID")
+        FirebaseDatabase.getInstance().getReference("Room/${StudentRoomActivity.subject}/${StudentRoomActivity.roomID}/hostID")
             .get().addOnSuccessListener {
                 if(it.exists()){
                     initWhiteBoard(it.value as String)

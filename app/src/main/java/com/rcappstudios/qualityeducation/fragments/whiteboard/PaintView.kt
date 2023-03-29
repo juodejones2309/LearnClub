@@ -46,7 +46,7 @@ class PaintView : View {
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
 
-    fun initRoom( roomId: String,activity: Activity) {
+    fun initRoom( roomId: String,subject: String, activity: Activity) {
         paths = ArrayList()
         paintScreen = Paint()
         paintLine = Paint()
@@ -61,7 +61,7 @@ class PaintView : View {
         endTouchFlag = false
         this.activity = activity
         this.roomId = roomId
-        pathReference = FirebaseDatabase.getInstance().getReference("Room/$roomId/whiteBoard")
+        pathReference = FirebaseDatabase.getInstance().getReference("Room/$subject/$roomId/whiteBoard")
 //        this.viewModel = viewModel
 //        this.viewModel.getPathData()
     }
