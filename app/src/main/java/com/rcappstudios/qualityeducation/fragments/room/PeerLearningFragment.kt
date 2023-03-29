@@ -112,7 +112,7 @@ class PeerLearningFragment : Fragment() {
     private fun initRv(roomList: MutableList<RoomModel>){
         binding.rvPeer.layoutManager = LinearLayoutManager(requireContext())
         binding.rvPeer.adapter =
-            PeerLearningAdapter(requireContext(), roomList){int, room->
+            PeerLearningAdapter(requireContext(), roomList, false){int, room->
                 //TODO: Confirmation dialog should be appeared
                 initJoinRoom(room.roomID.toString(), room.hostID.toString())
             }

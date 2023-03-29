@@ -6,12 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.FirebaseDatabase
+import com.google.mlkit.nl.translate.TranslateLanguage
+import com.google.mlkit.nl.translate.Translation
+import com.google.mlkit.nl.translate.Translator
+import com.google.mlkit.nl.translate.TranslatorOptions
+import com.rcappstudios.qualityeducation.MainActivity
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.adapters.AskQuestionsAdapter
 import com.rcappstudios.qualityeducation.adapters.MockTestAdapter
@@ -28,6 +34,7 @@ class SubjectDetailFragment : Fragment() {
     private var isMentor: Boolean = false
     private lateinit var  loadingDialog: LoadingDialog
     private lateinit var binding: FragmentSubjectDetailBinding
+    private lateinit var translator: Translator
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,7 +52,7 @@ class SubjectDetailFragment : Fragment() {
         fetchDoubtsData()
         fetchRoomsList()
         getMockTestList()
-
+        prepareTranslator()
         isMentor = requireActivity().getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
             .getBoolean("isMentor", false)
 
@@ -54,6 +61,8 @@ class SubjectDetailFragment : Fragment() {
 //            binding.createTest.visibility = View.GONE
 //        }
     }
+
+
 
     private fun clickListener(){
         binding.doubtsExpand.setOnClickListener {
@@ -126,8 +135,9 @@ class SubjectDetailFragment : Fragment() {
     }
 
     private fun initDoubtsRvAdapter(questionsList: ArrayList<QuestionModel>){
+        binding.rvDoubts.setHasFixedSize(true)
         binding.rvDoubts.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvDoubts.adapter = AskQuestionsAdapter(requireContext(), questionsList){ flag, value->
+        binding.rvDoubts.adapter = AskQuestionsAdapter(requireContext(), questionsList, true){ flag, value->
             when(flag){
                 2 -> switchToFragment(
                     SubjectDetailFragmentDirections.actionSubjectDetailFragmentToCommentsFragment(value),
@@ -140,9 +150,10 @@ class SubjectDetailFragment : Fragment() {
 
 
     private fun initRv(roomList: MutableList<RoomModel>){
-        binding.rvPeers.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvPeers.setHasFixedSize(true)
+        binding.rvPeers.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvPeers.adapter =
-            PeerLearningAdapter(requireContext(), roomList){int, room->
+            PeerLearningAdapter(requireContext(), roomList, true){int, room->
 
             }
     }
@@ -168,5 +179,44 @@ class SubjectDetailFragment : Fragment() {
         } catch (e: Exception) {
             false
         }
+
+    private  fun prepareTranslator() {
+        val sharedPreferences = requireActivity().getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
+            .getString(Constants.LANGUAGE, null)
+        if (sharedPreferences != null) {
+            val options = TranslatorOptions.Builder()
+                .setSourceLanguage(TranslateLanguage.ENGLISH)
+                .setTargetLanguage(sharedPreferences)
+                .build()
+           translator = Translation.getClient(options)
+
+            translator.downloadModelIfNeeded().addOnSuccessListener {
+                translate()
+            }.addOnFailureListener {
+
+            }
+        }
+    }
+
+    private fun translate(){
+        translator.translate(binding.tvRecentDoubt.text.toString()).addOnSuccessListener {
+            binding.tvRecentDoubt.text = it
+        }
+        translator.translate(binding.tvPeerDiscussion.text.toString()).addOnSuccessListener {
+            binding.tvPeerDiscussion.text = it
+        }
+        translator.translate(binding.tvRecentDoubt.text.toString()).addOnSuccessListener {
+            binding.tvRecentDoubt.text = it
+        }
+        translator.translate(binding.tvViewAll1.text.toString()).addOnSuccessListener {
+            binding.tvViewAll1.text = it
+        }
+        translator.translate(binding.tvViewAll2.text.toString()).addOnSuccessListener {
+            binding.tvViewAll2.text = it
+        }
+        translator.translate(binding.tvViewAll3.text.toString()).addOnSuccessListener {
+            binding.tvViewAll3.text = it
+        }
+    }
 
 }

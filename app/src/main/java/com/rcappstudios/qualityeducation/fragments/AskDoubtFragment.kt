@@ -68,7 +68,7 @@ class AskDoubtFragment : Fragment() {
 
     private fun initRvAdapter(questionsList: ArrayList<QuestionModel>){
         binding.rvQuestions.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvQuestions.adapter = AskQuestionsAdapter(requireContext(), questionsList){ flag, value->
+        binding.rvQuestions.adapter = AskQuestionsAdapter(requireContext(), questionsList, false){ flag, value->
             when(flag){
                 2 -> switchToFragment(
                     AskDoubtFragmentDirections.actionAskDoubtFragmentToCommentsFragment(value),

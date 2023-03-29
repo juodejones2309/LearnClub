@@ -19,6 +19,7 @@
     <string name="field_label">Field Label</string>
     <string name="radioBt_hint">Enter choices separated by comma \',\'</string>
     <string name="submit">Submit</string>
+    <string name="profile_settings"><![CDATA[Profile & Settings]]></string>
 
     <string-array name="array_language">
         <item>Select your language</item>

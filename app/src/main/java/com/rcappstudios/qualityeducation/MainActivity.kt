@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 //        supportActionBar!!.hide()
         setContentView(binding.root)
-        prepareTranslator()
+//        prepareTranslator()
         setUpNavigationComponent()
         isMentor = getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
             .getBoolean("isMentor", false)

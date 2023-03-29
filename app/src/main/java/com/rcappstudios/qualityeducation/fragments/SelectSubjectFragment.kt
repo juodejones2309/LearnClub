@@ -14,6 +14,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.mlkit.nl.translate.Translator
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.databinding.FragmentSelectSubjectBinding
 import com.rcappstudios.qualityeducation.chatgpt.ui.ChatGptActivity
@@ -22,6 +23,7 @@ class SelectSubjectFragment : Fragment() {
 
     private lateinit var binding: FragmentSelectSubjectBinding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+    private lateinit var translator : Translator
 
     override fun onCreateView(
 

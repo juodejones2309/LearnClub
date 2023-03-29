@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#D7D3D3"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="@dimen/_20sdp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="vertical"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:padding="@dimen/_8sdp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/roomTitle"
+                    android:drawableStart="@drawable/baseline_mic_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Social Science"
+                    android:drawablePadding="@dimen/_2sdp"
+                    android:fontFamily="@font/mplus_rounded_1c_semibold"
+                    android:textColor="@color/black"
+                    />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    app:cardElevation="0dp"
+                    app:cardMaxElevation="0dp"
+                    app:cardBackgroundColor="#998BC34A"
+                    >
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/subject"
+                        android:layout_width="wrap_content"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/mplus_rounded_1c_light"
+                        android:layout_height="wrap_content"
+                        android:text="Social"/>
+                </androidx.cardview.widget.CardView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/roomOwner"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="By Hari Haran R C"
+                    android:drawablePadding="@dimen/_2sdp"
+                    android:fontFamily="@font/mplus_rounded_1c_regular"
+                    android:textColor="@color/black"
+                    />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    app:cardElevation="0dp"
+                    app:cardMaxElevation="0dp"
+                    app:cardBackgroundColor="#33F7019D"
+                    >
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/date"
+                        android:layout_width="match_parent"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:fontFamily="@font/mplus_rounded_1c_light"
+                        android:layout_height="wrap_content"
+                        android:text="Thu, Jan 2023"/>
+                </androidx.cardview.widget.CardView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnJoinRoom"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_10sdp"
+
+                app:cardElevation="0dp"
+                app:cardMaxElevation="0dp"
+                android:paddingStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:cardBackgroundColor="#FEFEFE"
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginBottom="@dimen/_6sdp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/mplus_rounded_1c_extra_bold"
+                    android:layout_height="wrap_content"
+                    android:text="Join"/>
+            </androidx.cardview.widget.CardView>
+
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.cardview.widget.CardView>
+
+<!--</androidx.appcompat.widget.LinearLayoutCompat>-->

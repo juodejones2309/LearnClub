@@ -15,6 +15,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/tvRecentDoubt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
@@ -38,9 +39,10 @@
                 app:cardBackgroundColor="@color/purple_200"
                 app:cardElevation="0dp">
                 <TextView
+                    android:id="@+id/tvViewAll1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Expand"
+                    android:text="View all"
                     android:paddingTop="@dimen/_3sdp"
                     android:paddingBottom="@dimen/_3sdp"
                     android:paddingStart="@dimen/_5sdp"
@@ -63,6 +65,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/tvPeerDiscussion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
@@ -86,9 +89,10 @@
                 app:cardBackgroundColor="@color/purple_200"
                 app:cardElevation="0dp">
                 <TextView
+                    android:id="@+id/tvViewAll2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Expand"
+                    android:text="View all"
                     android:paddingTop="@dimen/_3sdp"
                     android:paddingBottom="@dimen/_3sdp"
                     android:paddingStart="@dimen/_5sdp"
@@ -108,6 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/tvTestChallenges"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Test challenges"
@@ -127,9 +132,11 @@
                 app:cardBackgroundColor="@color/purple_200"
                 app:cardElevation="0dp">
                 <TextView
+                    android:id="@+id/tvViewAll3"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="create test"
+                    android:text="View all"
                     android:paddingTop="@dimen/_3sdp"
                     android:paddingBottom="@dimen/_3sdp"
                     android:paddingStart="@dimen/_5sdp"

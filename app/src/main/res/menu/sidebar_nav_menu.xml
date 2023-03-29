@@ -21,6 +21,10 @@
         android:id="@+id/mentorsFragment"
         android:icon="@drawable/baseline_mentor"/>
 
+    <item
+        android:title="@string/profile_settings"
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/baseline_mentor"/>
 
 
 </menu>

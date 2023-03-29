@@ -3,6 +3,7 @@ package com.rcappstudios.qualityeducation.fragments
 import android.Manifest
 import android.app.AlertDialog
 import android.content.ActivityNotFoundException
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -28,6 +29,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.databinding.FragmentPostQuestionBinding
 import com.rcappstudios.qualityeducation.model.QuestionModel
+import com.rcappstudios.qualityeducation.utils.Constants
 import com.rcappstudios.qualityeducation.utils.LoadingDialog
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -163,7 +165,8 @@ class PostQuestionFragment : Fragment() {
                         questionID = questionID.toString(),
                         timeStamp = Calendar.getInstance().timeInMillis,
                         userImageUrl = "https://picsum.photos/200/300",
-                        userName = FirebaseAuth.getInstance().currentUser!!.displayName,
+                        userName = requireActivity().getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
+                            .getString(Constants.NAME, ""),
 //                        subjectName = subjectName,
                         imageUrl = imageUrl
                     )).addOnSuccessListener {
