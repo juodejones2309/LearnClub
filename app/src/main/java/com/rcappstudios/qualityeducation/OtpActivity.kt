@@ -2,6 +2,7 @@ package com.rcappstudios.qualityeducation
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -115,13 +116,18 @@ class OtpActivity : AppCompatActivity() {
         override fun onVerificationFailed(e: FirebaseException) {
             if (e is FirebaseAuthInvalidCredentialsException) {
                 loadingDialog.dismiss()
+                Log.d("CheckMobile", "onVerificationFailed: ${e.message} ")
                 Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
             } else if (e is FirebaseTooManyRequestsException) {
 
                 loadingDialog.dismiss()
+                Log.d("CheckMobile", "onVerificationFailed: ${e.message} ")
+
                 Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
             }
             loadingDialog.dismiss()
+            Log.d("CheckMobile", "onVerificationFailed: ${e.message} ")
+
             Toast.makeText(applicationContext, e.message, Toast.LENGTH_SHORT).show()
         }
 

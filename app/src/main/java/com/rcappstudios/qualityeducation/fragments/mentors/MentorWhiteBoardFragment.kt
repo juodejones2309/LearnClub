@@ -5,22 +5,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.auth.FirebaseAuth
 import com.rcappstudios.qualityeducation.R
+import com.rcappstudios.qualityeducation.databinding.FragmentMentorWhiteBoardBinding
 
 class MentorWhiteBoardFragment : Fragment() {
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
+    private lateinit var binding: FragmentMentorWhiteBoardBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mentor_white_board, container, false)
+        binding = FragmentMentorWhiteBoardBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.paintView.myTurn = MentorSupportActivity.isMentor
+        initWhiteBoard()
+    }
+
+    private fun initWhiteBoard(){
+        binding.paintView.initMentor(MentorSupportActivity.subject, MentorSupportActivity.mentorUserId, MentorSupportActivity.studentUserId, requireActivity())
+        binding.paintView.pathUpdateListener()
     }
 
 }

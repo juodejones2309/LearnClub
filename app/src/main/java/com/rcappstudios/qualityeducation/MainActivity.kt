@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        if(true){
+        if(isMentor){
             menuInflater.inflate(R.menu.mentor_top_menu, menu)
         }
         return true

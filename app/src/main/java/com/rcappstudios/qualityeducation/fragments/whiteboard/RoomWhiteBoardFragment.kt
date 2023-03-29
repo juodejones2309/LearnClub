@@ -31,7 +31,7 @@ class RoomWhiteBoardFragment : Fragment() {
     }
 
     private fun initWhiteBoard(hostID: String){
-        binding.paintView.init(StudentRoomActivity.roomID, requireActivity())
+        binding.paintView.initRoom(StudentRoomActivity.roomID, requireActivity())
         Log.d("TAGData", "initWhiteBoard: $hostID")
         if(hostID == FirebaseAuth.getInstance().uid){
             binding.paintView.myTurn = true

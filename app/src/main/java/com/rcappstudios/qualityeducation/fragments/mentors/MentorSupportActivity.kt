@@ -32,9 +32,9 @@ class MentorSupportActivity : AppCompatActivity() {
             .getBoolean("isMentor", true)
 
         if(isMentor){
-            mentorUserId = FirebaseAuth.getInstance().uid.toString()
             //Intent Coming from MentorViewMessageActivity
             studentUserId = intent.getStringExtra("studentUserId")!!
+            mentorUserId = FirebaseAuth.getInstance().uid.toString()
             subject = getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
                 .getString("subject", "Physics")!!
         } else {
@@ -84,6 +84,13 @@ class MentorSupportActivity : AppCompatActivity() {
             false
         }
 
+    override fun onBackPressed() {
+        if(binding.bottomBar.getSelectedItemId() == R.id.roomChat){
+            super.onBackPressed()
+        } else {
+            binding.bottomBar.setItemSelected(R.id.roomChat)
+        }
 
+    }
 //    private fun
 }

@@ -33,7 +33,7 @@ class MentorViewMessagesActivity : AppCompatActivity() {
 
     private fun getStudentDetails(){
         FirebaseDatabase.getInstance()
-            .getReference("Mentors/$subject/BPbcbSibAHejJmVf8M26z0ZPCfb2/connections")
+            .getReference("Mentors/$subject/${FirebaseAuth.getInstance().currentUser!!.uid}/connections")
             .get()
             .addOnSuccessListener {
                 if(it.exists()){

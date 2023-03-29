@@ -61,7 +61,15 @@ class MentorChatFragment : Fragment() {
 
     private fun initStudentMessage(){
         FirebaseDatabase.getInstance().getReference("Mentors/${MentorSupportActivity.subject}/${MentorSupportActivity.mentorUserId}/connections/$studentUid")
-            .setValue(InitStudentMessage(userName, studentUid))
+            .get()
+            .addOnSuccessListener {
+                if(it.exists()){
+                    //DO Nothing
+                } else {
+                    FirebaseDatabase.getInstance().getReference("Mentors/${MentorSupportActivity.subject}/${MentorSupportActivity.mentorUserId}/connections/$studentUid")
+                        .setValue(InitStudentMessage(userName, studentUid))
+                }
+            }
     }
 
     private fun clickListener(){
