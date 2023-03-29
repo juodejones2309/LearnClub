@@ -1,5 +1,6 @@
 package com.rcappstudios.qualityeducation.fragments
 
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -20,11 +21,13 @@ import com.rcappstudios.qualityeducation.databinding.FragmentSubjectDetailBindin
 import com.rcappstudios.qualityeducation.model.QuestionModel
 import com.rcappstudios.qualityeducation.model.RoomModel
 import com.rcappstudios.qualityeducation.model.Test
+import com.rcappstudios.qualityeducation.utils.Constants
 import com.rcappstudios.qualityeducation.utils.LoadingDialog
 
 class SubjectDetailFragment : Fragment() {
 
     val navArgs: SubjectDetailFragmentArgs by navArgs()
+    private var isMentor: Boolean = false
     private lateinit var  loadingDialog: LoadingDialog
     private lateinit var binding: FragmentSubjectDetailBinding
     override fun onCreateView(
@@ -45,9 +48,13 @@ class SubjectDetailFragment : Fragment() {
         fetchRoomsList()
         getMockTestList()
 
-        if(FirebaseAuth.getInstance().currentUser!!.uid != "r2z2HA4PMGYJIenwaMo9tZdSQFF2"){
-            binding.createTest.visibility = View.GONE
-        }
+        isMentor = requireActivity().getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
+            .getBoolean("isMentor", false)
+
+
+//        if(FirebaseAuth.getInstance().currentUser!!.uid != "r2z2HA4PMGYJIenwaMo9tZdSQFF2"){
+//            binding.createTest.visibility = View.GONE
+//        }
     }
 
     private fun clickListener(){
