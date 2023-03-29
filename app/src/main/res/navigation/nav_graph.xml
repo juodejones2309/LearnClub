@@ -25,7 +25,12 @@
         android:id="@+id/peerLearningFragment"
         android:name="com.rcappstudios.qualityeducation.fragments.room.PeerLearningFragment"
         android:label="fragment_peer_learning"
-        tools:layout="@layout/fragment_peer_learning" />
+        tools:layout="@layout/fragment_peer_learning" >
+        <argument
+            android:name="subject"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/postQuestionFragment"
         android:name="com.rcappstudios.qualityeducation.fragments.PostQuestionFragment"
@@ -73,6 +78,9 @@
         <action
             android:id="@+id/action_subjectDetailFragment_to_mockTestFillFragment"
             app:destination="@id/mockTestFillFragment" />
+        <action
+            android:id="@+id/action_subjectDetailFragment_to_peerLearningFragment"
+            app:destination="@id/peerLearningFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatGptFragment"
