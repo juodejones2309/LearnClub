@@ -12,8 +12,10 @@ object Constants {
 
     const val YOUTUBE_API_KEY = "AIzaSyCAu-zrCeVJavtWcFxeL-MoXDjRFid6TAQ"
 
-    const val CHAT_GPT_TOKEN = "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"
+    const val CHAT_GPT_TOKEN = "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"
 
     const val SUBJECT = "subject"
+
+    const val IS_MENTOR = "isMentor"
 
 }

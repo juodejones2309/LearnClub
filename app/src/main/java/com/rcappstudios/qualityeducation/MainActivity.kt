@@ -3,6 +3,7 @@ package com.rcappstudios.qualityeducation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -29,11 +30,26 @@ class MainActivity : AppCompatActivity() {
         setUpNavigationComponent()
         isMentor = getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
             .getBoolean("isMentor", false)
-
+        checkSharedPrefData()
 //        FirebaseDatabase.getInstance()
 //            .getReference("Room/-NQtlKL0du600SeiAvE9/whiteBoard")
 //            .removeValue()
 
+    }
+
+    private fun checkSharedPrefData(){
+        val sharedPref = getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
+
+        val isMentor = sharedPref.getBoolean("isMentor", false)
+        if(isMentor){
+            val mentorName = sharedPref.getString(Constants.NAME, null)
+            val mentorSubject = sharedPref.getString(Constants.SUBJECT, null)
+            Log.d("TAGData", "checkSharedPrefData: mentorName -> $mentorName mentorSubject -> $mentorSubject")
+        } else {
+            val studentName = sharedPref.getString(Constants.NAME, null)
+            val grade = sharedPref.getString(Constants.GRADE, null)
+            Log.d("TAGData", "checkSharedPrefData: mentorName -> $studentName mentorSubject -> $grade")
+        }
     }
 
     private fun setUpNavigationComponent(){

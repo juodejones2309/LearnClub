@@ -163,6 +163,7 @@ class StudentRoomActivity : AppCompatActivity() {
     }
 
     private fun fetchMatesDetails(){
+        //TODO: Change the room id
         FirebaseDatabase.getInstance().getReference("Room/-NQtlKL0du600SeiAvE9/mates")
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {

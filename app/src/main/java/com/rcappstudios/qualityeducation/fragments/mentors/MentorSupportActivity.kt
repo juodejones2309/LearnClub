@@ -15,10 +15,13 @@ class MentorSupportActivity : AppCompatActivity() {
 
 
     companion object{
-       lateinit var mentorUserId: String
-       lateinit var subject: String
-       lateinit var studentUserId: String
-       var isMentor: Boolean = false
+        @JvmStatic
+        lateinit var mentorUserId: String
+        @JvmStatic
+        lateinit var subject: String
+        @JvmStatic
+        lateinit var studentUserId: String
+        var isMentor: Boolean = false
     }
 
     private lateinit var binding: ActivityMentorSupportBinding

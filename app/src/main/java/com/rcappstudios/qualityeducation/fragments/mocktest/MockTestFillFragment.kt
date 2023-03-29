@@ -63,17 +63,24 @@ class MockTestFillFragment : Fragment() {
             .addOnSuccessListener {
                 if (it.exists()) {
                     student = it.getValue(StudentData::class.java)
+                    student!!.testAttended = student!!.testAttended!! + 1
+                    if (score > 0) {
+                        student!!.score = student!!.score!! + score
+                    }
+                    FirebaseDatabase.getInstance().getReference("Students/" +
+                            "${FirebaseAuth.getInstance().currentUser?.uid}").setValue(student)
                 }
             }
 
-        if (student != null) {
+       /* if (student != null) {
+            Log.d("StudentSimulation", "updateStudentDB: ${student!!.name}")
             student!!.testAttended = student!!.testAttended!! + 1
             if (score > 0) {
                 student!!.score = student!!.score!! + score
             }
             FirebaseDatabase.getInstance().getReference("Students/" +
                     "${FirebaseAuth.getInstance().currentUser?.uid}").setValue(student)
-        }
+        }*/
     }
 
     private fun getScore(): Int {
