@@ -1,32 +1,43 @@
 package com.rcappstudios.qualityeducation.fragments
 
+import android.annotation.SuppressLint
+import android.app.Activity.RESULT_OK
 import android.content.Context.MODE_PRIVATE
+import android.content.Intent
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.provider.OpenableColumns
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.Translator
 import com.google.mlkit.nl.translate.TranslatorOptions
-import com.rcappstudios.qualityeducation.MainActivity
+import com.rajat.pdfviewer.PdfViewerActivity
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.adapters.AskQuestionsAdapter
 import com.rcappstudios.qualityeducation.adapters.MockTestAdapter
+import com.rcappstudios.qualityeducation.adapters.PDFAdapter
 import com.rcappstudios.qualityeducation.adapters.PeerLearningAdapter
 import com.rcappstudios.qualityeducation.databinding.FragmentSubjectDetailBinding
+import com.rcappstudios.qualityeducation.model.PdfModel
 import com.rcappstudios.qualityeducation.model.QuestionModel
 import com.rcappstudios.qualityeducation.model.RoomModel
 import com.rcappstudios.qualityeducation.utils.Constants
 import com.rcappstudios.qualityeducation.utils.LoadingDialog
+import java.util.*
+
 
 class SubjectDetailFragment : Fragment() {
 
@@ -35,6 +46,14 @@ class SubjectDetailFragment : Fragment() {
     private lateinit var  loadingDialog: LoadingDialog
     private lateinit var binding: FragmentSubjectDetailBinding
     private lateinit var translator: Translator
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == RESULT_OK){
+            Log.d("TAGImageName", "onActivityResult: ${getFileName(data!!.data!!)}")
+            postToStorage(data!!.data!!, getFileName(data!!.data!!)!!)
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,6 +71,7 @@ class SubjectDetailFragment : Fragment() {
         fetchDoubtsData()
         fetchRoomsList()
         getMockTestList()
+        fetchPdfDetails()
         prepareTranslator()
         isMentor = requireActivity().getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
             .getBoolean("isMentor", false)
@@ -78,6 +98,10 @@ class SubjectDetailFragment : Fragment() {
         binding.createTest.setOnClickListener {
             val directions = SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMockTestCreateFragment(navArgs.subjectName.toString())
             switchToFragment(directions, R.id.mockTestCreateFragment)
+        }
+
+        binding.uploadDocuments.setOnClickListener {
+            uploadDocuments()
         }
     }
 
@@ -198,6 +222,51 @@ class SubjectDetailFragment : Fragment() {
         }
     }
 
+    private fun  uploadDocuments(){
+        val galleryIntent = Intent()
+        galleryIntent.action = Intent.ACTION_GET_CONTENT
+        galleryIntent.type = "application/pdf"
+        startActivityForResult(galleryIntent, 1)
+//        getPdf.launch(galleryIntent)
+
+    }
+
+    private fun postToStorage(uri: Uri, pdfName: String){
+        FirebaseStorage.getInstance()
+            .getReference("Pdf/${Calendar.getInstance().timeInMillis}")
+            .putFile(uri)
+            .addOnSuccessListener {
+                    it.storage.downloadUrl.addOnSuccessListener {url->
+                        storeToDatabase(url.toString(), pdfName)
+                    }
+                }
+            }
+    private fun storeToDatabase(url: String, pdfName: String) {
+        FirebaseDatabase.getInstance()
+            .getReference("Groups/${navArgs.subjectName}/materials")
+            .push()
+            .setValue(
+                PdfModel(
+                pdfName,
+                url
+            ))
+        Log.d("TAGDataUrl", "storeToDatabase: $url")
+    }
+
+    private fun fetchPdfDetails(){
+        FirebaseDatabase.getInstance()
+            .getReference("Groups/${navArgs.subjectName}/materials")
+            .get()
+            .addOnSuccessListener{
+                val pdfList = mutableListOf<PdfModel>()
+                for(c in it.children){
+                    pdfList.add(c.getValue(PdfModel::class.java)!!)
+                }
+                initPdfRv(pdfList)
+            }
+    }
+
+
     private fun translate(){
         translator.translate(binding.tvRecentDoubt.text.toString()).addOnSuccessListener {
             binding.tvRecentDoubt.text = it
@@ -217,6 +286,46 @@ class SubjectDetailFragment : Fragment() {
 //        translator.translate(binding.tvViewAll3.text.toString()).addOnSuccessListener {
 //            binding.tvViewAll3.text = it
 //        }
+    }
+
+    private fun initPdfRv(pdfList: MutableList<PdfModel>){
+//        binding.documentsRecyclerView.setHasFixedSize(true)
+        binding.documentsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.documentsRecyclerView.adapter = PDFAdapter(
+            requireContext(),
+            pdfList
+        ){ pdfUrl->
+            startActivity(
+                PdfViewerActivity.launchPdfFromUrl(
+                    requireContext(),
+                    pdfUrl,
+                    "View Document",
+                    "",
+                    enableDownload = false
+                )
+            )
+        }
+    }
+
+    @SuppressLint("Range")
+    fun getFileName(uri: Uri): String? {
+        var result: String? = null
+        if (uri.scheme == "content") {
+            val cursor: Cursor = requireActivity().contentResolver.query(uri, null, null, null, null)!!
+            cursor.use { cursor ->
+                if (cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
+                }
+            }
+        }
+        if (result == null) {
+            result = uri.path
+            val cut = result!!.lastIndexOf('/')
+            if (cut != -1) {
+                result = result!!.substring(cut + 1)
+            }
+        }
+        return result
     }
 
 }

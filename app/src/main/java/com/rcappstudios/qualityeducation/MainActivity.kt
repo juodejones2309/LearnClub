@@ -3,6 +3,7 @@ package com.rcappstudios.qualityeducation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -17,6 +18,7 @@ import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.Translator
 import com.google.mlkit.nl.translate.TranslatorOptions
+import com.rajat.pdfviewer.PdfViewerActivity
 import com.rcappstudios.qualityeducation.databinding.ActivityMainBinding
 import com.rcappstudios.qualityeducation.fragments.mentors.MentorViewMessagesActivity
 import com.rcappstudios.qualityeducation.utils.Constants
@@ -45,7 +47,9 @@ class MainActivity : AppCompatActivity() {
 //        FirebaseDatabase.getInstance()
 //            .getReference("Room/-NQtlKL0du600SeiAvE9/whiteBoard")
 //            .removeValue()
+        actionBar?.setTitle(Html.fromHtml("<font color=\"black\">" + getString(R.string.app_name) + "</font>"))
 
+//        openPdf()
     }
 
     private fun checkSharedPrefData(){
@@ -108,6 +112,18 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+    }
+
+    private fun openPdf(){
+        startActivity(
+        PdfViewerActivity.launchPdfFromUrl(           //PdfViewerActivity.Companion.launchPdfFromUrl(..   :: incase of JAVA
+            this,// ,
+            "https://firebasestorage.googleapis.com/v0/b/qualityeducation-96caa.appspot.com/o/Pdf%2F1680193711159?alt=media&token=dbcd2185-91c8-4f6f-9ce0-53acb45e4718",                                // PDF URL in String format
+            "Pdf title/name ",                        // PDF Name/Title in String format
+            "",                  // If nothing specific, Put "" it will save to Downloads
+            enableDownload = false                    // This param is true by defualt.
+        )
+        )
     }
 
 }

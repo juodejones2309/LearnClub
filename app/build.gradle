@@ -127,6 +127,7 @@ dependencies {
     //Timer
     implementation 'ir.samanjafari.easycountdowntimer:easycountdowntimer:2.5.0'
 
+    implementation 'com.github.afreakyelf:Pdf-Viewer:v1.0.7'
 }
 
 kapt {
