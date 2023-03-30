@@ -33,7 +33,7 @@ class CompletionAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val completionData = completionList[position]
         if(completionData.isBot){
-            holder.ivBot.setImageResource(R.drawable.chat_gpt_logo)
+            holder.ivBot.setImageResource(R.drawable.ai_logo)
             holder.header.text = "Bot"
         } else{
             holder.ivBot.setImageResource(R.drawable.user_img)

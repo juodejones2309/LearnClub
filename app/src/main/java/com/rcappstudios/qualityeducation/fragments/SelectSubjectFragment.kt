@@ -121,11 +121,11 @@ class SelectSubjectFragment : Fragment(), SubjectAdapter.SubjectClickListener {
         }
 
         binding.addClsFab.setOnClickListener{
-            initBottomSheet()
+//            initBottomSheet()
         }
 
         binding.bottomSheet.btnCreateRoom.setOnClickListener {
-            extractDetails()
+//            extractDetails()
         }
 
     }

@@ -35,7 +35,7 @@ class ImageGenerationAdapter(
         if (imageGenerationData.isBot) {
             holder.textBot.visibility = View.GONE
             holder.ivGenerated.visibility = View.VISIBLE
-            holder.ivBot.setImageResource(R.drawable.chat_gpt_logo)
+            holder.ivBot.setImageResource(R.drawable.ai_logo)
             holder.header.text = "Bot"
             if (imageGenerationData.url != null && imageGenerationData.url != "") {
                 Picasso.get()

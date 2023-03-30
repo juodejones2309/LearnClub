@@ -32,7 +32,7 @@
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     app:riv_corner_radius="@dimen/_4sdp"
-                    android:src="@drawable/chat_gpt_logo"/>
+                    android:src="@drawable/ai_logo"/>
                 <TextView
                     android:id="@+id/header"
                     android:layout_width="match_parent"
