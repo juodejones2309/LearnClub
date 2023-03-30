@@ -29,28 +29,23 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
-            <androidx.cardview.widget.CardView
-                android:id="@+id/doubtsExpand"
+
+            <TextView
+                android:id="@+id/doubts_expand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/_10sdp"
                 android:layout_alignParentEnd="true"
-                android:layout_margin="@dimen/_5sdp"
-                app:cardBackgroundColor="@color/purple_200"
-                app:cardElevation="0dp">
-                <TextView
-                    android:id="@+id/tvViewAll1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="View all"
-                    android:paddingTop="@dimen/_3sdp"
-                    android:paddingBottom="@dimen/_3sdp"
-                    android:paddingStart="@dimen/_5sdp"
-                    android:paddingEnd="@dimen/_5sdp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/mplus_rounded_1c_extra_bold"
-                    />
-            </androidx.cardview.widget.CardView>
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:fontFamily="@font/mplus_rounded_1c_extra_bold"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:text="View all"
+                android:textColor="@color/purple_200" />
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -79,28 +74,23 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
-            <androidx.cardview.widget.CardView
-                android:id="@+id/peersExpand"
+
+            <TextView
+                android:id="@+id/peers_expand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/_10sdp"
                 android:layout_alignParentEnd="true"
-                android:layout_margin="@dimen/_5sdp"
-                app:cardBackgroundColor="@color/purple_200"
-                app:cardElevation="0dp">
-                <TextView
-                    android:id="@+id/tvViewAll2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="View all"
-                    android:paddingTop="@dimen/_3sdp"
-                    android:paddingBottom="@dimen/_3sdp"
-                    android:paddingStart="@dimen/_5sdp"
-                    android:paddingEnd="@dimen/_5sdp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/mplus_rounded_1c_extra_bold"
-                    />
-            </androidx.cardview.widget.CardView>
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:fontFamily="@font/mplus_rounded_1c_extra_bold"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:text="View all"
+                android:textColor="@color/purple_200" />
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -116,35 +106,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Test challenges"
+                android:textSize="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/mplus_rounded_1c_extra_bold"
                 />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/createTest"
+            <TextView
+                android:id="@+id/create_test"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/_10sdp"
                 android:layout_alignParentEnd="true"
-                android:layout_margin="@dimen/_5sdp"
-                app:cardBackgroundColor="@color/purple_200"
-                app:cardElevation="0dp">
-                <TextView
-                    android:id="@+id/tvViewAll3"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="View all"
-                    android:paddingTop="@dimen/_3sdp"
-                    android:paddingBottom="@dimen/_3sdp"
-                    android:paddingStart="@dimen/_5sdp"
-                    android:paddingEnd="@dimen/_5sdp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/mplus_rounded_1c_extra_bold"
-                    />
-            </androidx.cardview.widget.CardView>
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:fontFamily="@font/mplus_rounded_1c_extra_bold"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:text="Create"
+                android:textColor="@color/purple_200" />
         </RelativeLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mockTestRecyclerView"

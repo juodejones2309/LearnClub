@@ -60,8 +60,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:text="Chemistry"
-                            android:textAlignment="center"
-                            android:textColor="#ffffff" />
+                            android:textAlignment="center" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -84,8 +83,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:text="Physics"
-                            android:textAlignment="center"
-                            android:textColor="#ffffff" />
+                            android:textAlignment="center" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -111,8 +109,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:text="Social"
-                            android:textAlignment="center"
-                            android:textColor="#ffffff" />
+                            android:textAlignment="center" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -130,16 +127,15 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:layout_weight="1"
-                            app:srcCompat="@drawable/btn_6" />
+                            app:srcCompat="@drawable/btn_4" />
 
                         <TextView
                             android:id="@+id/computerText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:text="Economies"
-                            android:textAlignment="center"
-                            android:textColor="#ffffff" />
+                            android:text="Computer"
+                            android:textAlignment="center" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -157,7 +153,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:layout_weight="1"
-                            app:srcCompat="@drawable/calculator" />
+                            app:srcCompat="@drawable/btn_5" />
 
                         <TextView
                             android:id="@+id/mathsText"
@@ -165,8 +161,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:text="Maths"
-                            android:textAlignment="center"
-                            android:textColor="#ffffff" />
+                            android:textAlignment="center" />
                     </LinearLayout>
 
                 </LinearLayout>

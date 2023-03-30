@@ -41,8 +41,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 //        prepareTranslator()
         setUpNavigationComponent()
-        isMentor = getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
-            .getBoolean("isMentor", false)
         checkSharedPrefData()
 //        FirebaseDatabase.getInstance()
 //            .getReference("Room/-NQtlKL0du600SeiAvE9/whiteBoard")
@@ -53,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkSharedPrefData(){
         val sharedPref = getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
 
-        val isMentor = sharedPref.getBoolean("isMentor", false)
+        isMentor = sharedPref.getBoolean("isMentor", false)
         if(isMentor){
             val mentorName = sharedPref.getString(Constants.NAME, null)
             val mentorSubject = sharedPref.getString(Constants.SUBJECT, null)

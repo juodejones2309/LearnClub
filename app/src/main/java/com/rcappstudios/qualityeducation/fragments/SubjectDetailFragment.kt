@@ -208,15 +208,15 @@ class SubjectDetailFragment : Fragment() {
         translator.translate(binding.tvRecentDoubt.text.toString()).addOnSuccessListener {
             binding.tvRecentDoubt.text = it
         }
-        translator.translate(binding.tvViewAll1.text.toString()).addOnSuccessListener {
-            binding.tvViewAll1.text = it
-        }
-        translator.translate(binding.tvViewAll2.text.toString()).addOnSuccessListener {
-            binding.tvViewAll2.text = it
-        }
-        translator.translate(binding.tvViewAll3.text.toString()).addOnSuccessListener {
-            binding.tvViewAll3.text = it
-        }
+//        translator.translate(binding.tvViewAll1.text.toString()).addOnSuccessListener {
+//            binding.tvViewAll1.text = it
+//        }
+//        translator.translate(binding.tvViewAll2.text.toString()).addOnSuccessListener {
+//            binding.tvViewAll2.text = it
+//        }
+//        translator.translate(binding.tvViewAll3.text.toString()).addOnSuccessListener {
+//            binding.tvViewAll3.text = it
+//        }
     }
 
 }

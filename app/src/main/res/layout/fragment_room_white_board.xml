@@ -29,6 +29,7 @@
         app:sparkbutton_primaryColor="@color/purple_500"
         android:layout_marginBottom="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
+        android:visibility="gone"
         app:sparkbutton_secondaryColor="@color/purple_700" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

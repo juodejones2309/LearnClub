@@ -2,6 +2,7 @@ package com.rcappstudios.qualityeducation.fragments.mentors
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -12,7 +13,6 @@ import com.rcappstudios.qualityeducation.utils.Constants
 
 
 class MentorSupportActivity : AppCompatActivity() {
-
 
     companion object{
         @JvmStatic
@@ -48,6 +48,7 @@ class MentorSupportActivity : AppCompatActivity() {
         }
 
         setupBottomNavigation()
+        binding.bottomBar.visibility = View.GONE
         binding.bottomBar.setItemSelected(R.id.roomChat)
     }
 

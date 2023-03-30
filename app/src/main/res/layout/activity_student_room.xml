@@ -48,20 +48,11 @@
 
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/audioSwitch"
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Audio"
                         />
-
-<!--                    <androidx.appcompat.widget.AppCompatTextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:drawableStart="@drawable/baseline_broadcast_on_personal_24"-->
-<!--                        android:drawablePadding="@dimen/_5sdp"-->
-<!--                        android:text="Mute audio"-->
-<!--                        android:textAlignment="center"-->
-<!--                        android:padding="@dimen/_5sdp"-->
-<!--                        />-->
 
 
                 </com.google.android.material.card.MaterialCardView>

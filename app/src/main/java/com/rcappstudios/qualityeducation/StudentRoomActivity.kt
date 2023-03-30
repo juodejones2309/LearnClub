@@ -88,7 +88,8 @@ class StudentRoomActivity : AppCompatActivity() {
         subject = intent.getStringExtra("Subject")!!
         init()
         Log.d("RoomID", "onCreate:activity $roomID")
-        binding.bottomBar.setItemSelected(R.id.roomWhiteBoard)
+        binding.bottomBar.visibility = View.GONE
+        binding.bottomBar.setItemSelected(R.id.roomChat)
 
     }
     private fun init(){
@@ -96,9 +97,10 @@ class StudentRoomActivity : AppCompatActivity() {
         if (!checkSelfPermission()) {
             ActivityCompat.requestPermissions(this, REQUESTED_PERMISSIONS, PERMISSION_REQ_ID);
         }
-        setupVoiceSDKEngine();
-        joinChannel()
-        binding.audioSwitch.isChecked = true
+        //TODO("Voice Channel has been disabled")
+//        setupVoiceSDKEngine();
+//        joinChannel()
+        binding.audioSwitch.isChecked = false
 
         binding.audioSwitch.setOnCheckedChangeListener(object :CompoundButton.OnCheckedChangeListener{
             override fun onCheckedChanged(p0: CompoundButton?, p1: Boolean) {
@@ -208,12 +210,12 @@ class StudentRoomActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        agoraEngine!!.leaveChannel()
-        Thread {
-            RtcEngine.destroy()
-            agoraEngine = null
-        }.start()
-
+//        agoraEngine!!.leaveChannel()
+//        Thread {
+//            RtcEngine.destroy()
+//            agoraEngine = null
+//        }.start()
+//
         FirebaseDatabase.getInstance().getReference("Room/$subject/${roomID}/mates/${ FirebaseAuth.getInstance().uid}")
             .removeValue()
     }
@@ -239,19 +241,20 @@ class StudentRoomActivity : AppCompatActivity() {
         }
 
     override fun onBackPressed() {
-        if(binding.bottomBar.getSelectedItemId() == R.id.roomWhiteBoard){
-
-            val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-
-            builder.setTitle("Leave Room")
-            builder.setMessage("Are you sure to leave room?")
-            builder .setPositiveButton("Ok"){_,_->
-                super.onBackPressed()
-                }.setNegativeButton("Cancel", /* listener = */ null)
-                .show();
-        }
-
-        binding.bottomBar.setItemSelected(R.id.roomWhiteBoard)
+//        if(binding.bottomBar.getSelectedItemId() == R.id.roomWhiteBoard){
+//
+//            val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+//
+//            builder.setTitle("Leave Room")
+//            builder.setMessage("Are you sure to leave room?")
+//            builder .setPositiveButton("Ok"){_,_->
+//                super.onBackPressed()
+//                }.setNegativeButton("Cancel", /* listener = */ null)
+//                .show();
+//        }
+//
+//        binding.bottomBar.setItemSelected(R.id.roomWhiteBoard)
+        super.onBackPressed()
     }
 
 

@@ -47,6 +47,7 @@ class SelectSubjectFragment : Fragment(), SubjectAdapter.SubjectClickListener {
         binding.subjectRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
         initSubjectRv()
         clickListener()
+        binding.subjectRv.visibility = View.GONE
     }
 
     private fun initSubjectRv() {
