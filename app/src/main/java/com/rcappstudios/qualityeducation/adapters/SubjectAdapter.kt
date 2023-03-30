@@ -12,7 +12,7 @@ import com.rcappstudios.qualityeducation.model.InitStudentMessage
 class SubjectAdapter(
     private val context: Context,
     private var subjectList: MutableList<String>,
-    private val onClick: (String) -> Unit
+    private val onClick: SubjectClickListener
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
@@ -28,6 +28,9 @@ class SubjectAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         binding.subjectTv.setText(subjectList[position])
+        binding.subjectTv.setOnClickListener {
+            onClick.onSubjectClick(subjectList[position])
+        }
     }
 
     fun updateSubject(subject: String) {
@@ -35,4 +38,7 @@ class SubjectAdapter(
         notifyDataSetChanged()
     }
 
+    interface SubjectClickListener{
+        fun onSubjectClick(subject: String)
+    }
 }

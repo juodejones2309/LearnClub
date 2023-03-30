@@ -23,11 +23,12 @@ import com.rcappstudios.qualityeducation.adapters.SubjectAdapter
 import com.rcappstudios.qualityeducation.databinding.FragmentSelectSubjectBinding
 import com.rcappstudios.qualityeducation.chatgpt.ui.ChatGptActivity
 
-class SelectSubjectFragment : Fragment() {
+class SelectSubjectFragment : Fragment(), SubjectAdapter.SubjectClickListener {
 
     private lateinit var binding: FragmentSelectSubjectBinding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private lateinit var subjectAdapter: SubjectAdapter
+    private var subjectList: MutableList<String> = mutableListOf()
 
     override fun onCreateView(
 
@@ -49,28 +50,32 @@ class SelectSubjectFragment : Fragment() {
     }
 
     private fun initSubjectRv() {
-       /* FirebaseDatabase.getInstance().getReference("Groups")
+        FirebaseDatabase.getInstance().getReference("Groups")
             .addChildEventListener(object : ChildEventListener {
                 override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                    TODO("Not yet implemented")
+                    val subject = snapshot.key
+                    subjectList.add(subject!!)
+                    setSubjectAdapter()
                 }
 
                 override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-                    TODO("Not yet implemented")
+                    //Do nothing
                 }
 
                 override fun onChildRemoved(snapshot: DataSnapshot) {
-                    TODO("Not yet implemented")
+                    val subject = snapshot.key
+                    subjectList.add(subject!!)
+                    setSubjectAdapter()
                 }
 
                 override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                    TODO("Not yet implemented")
+                    // Do Nothing
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+                    // Do Nothing
                 }
-            })*/
+            })
     }
 
     private fun clickListener(){
@@ -122,6 +127,11 @@ class SelectSubjectFragment : Fragment() {
             extractDetails()
         }
 
+    }
+
+    private fun setSubjectAdapter() {
+        subjectAdapter = SubjectAdapter(requireContext(), subjectList, this@SelectSubjectFragment)
+        binding.subjectRv.adapter = subjectAdapter
     }
 
     private fun initBottomSheet(){
@@ -179,5 +189,11 @@ class SelectSubjectFragment : Fragment() {
             false
         }
 
-
+    override fun onSubjectClick(subject: String) {
+        switchToSubjectDetail(
+            SelectSubjectFragmentDirections
+                .actionSelectSubjectFragmentToSubjectDetailFragment
+                    (subject),
+            R.id.subjectDetailFragment)
+    }
 }

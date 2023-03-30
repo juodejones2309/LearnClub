@@ -15,7 +15,7 @@ import com.rcappstudios.qualityeducation.databinding.FragmentTestGameBinding
 import com.rcappstudios.qualityeducation.model.Test
 
 
-class TestGameFragment : Fragment() {
+class TestGameFragment : Fragment(), SubjectAdapter.SubjectClickListener {
 
     private lateinit var binding: FragmentTestGameBinding
 
@@ -50,12 +50,12 @@ class TestGameFragment : Fragment() {
     private fun initTestRv(testList: MutableList<String>){
         binding.testNameRv.layoutManager = LinearLayoutManager(requireContext())
         binding.testNameRv.setHasFixedSize(true)
-        binding.testNameRv.adapter = SubjectAdapter(requireContext(), testList){
-            //TODO: Show confirmation dialog
-            val intent = Intent(requireActivity(), AttendTestActivity::class.java)
-            intent.putExtra("testName", it)
-            startActivity(intent)
-        }
+        binding.testNameRv.adapter = SubjectAdapter(requireContext(), testList, this)
     }
 
+    override fun onSubjectClick(subject: String) {
+        val intent = Intent(requireActivity(), AttendTestActivity::class.java)
+        intent.putExtra("testName", subject)
+        startActivity(intent)
+    }
 }
