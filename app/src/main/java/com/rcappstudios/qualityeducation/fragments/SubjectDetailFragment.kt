@@ -12,6 +12,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
@@ -127,11 +128,23 @@ class SubjectDetailFragment : Fragment() {
 
     private fun initMockTestAdapter(testList: MutableList<Test>){
         binding.mockTestRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.mockTestRecyclerView.adapter = MockTestAdapter(requireContext(),testList){int, test->
-            val directions = SubjectDetailFragmentDirections
-                .actionSubjectDetailFragmentToMockTestFillFragment(navArgs.subjectName, test.name!!)
-            switchToFragment(directions, R.id.mockTestFillFragment)
+        binding.mockTestRecyclerView.adapter = MockTestAdapter(requireContext(),testList) { int, test ->
+            if (test.creator == FirebaseAuth.getInstance().uid) {
+                val directions =
+                    SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMockTestResultFragment(
+                        navArgs.subjectName.toString(),
+                        test.name.toString()
+                    )
+                switchToFragment(directions, R.id.mockTestResultFragment)
+            } else {
+                val directions = SubjectDetailFragmentDirections
+                    .actionSubjectDetailFragmentToMockTestFillFragment(
+                        navArgs.subjectName,
+                        test.name!!
+                    )
+                switchToFragment(directions, R.id.mockTestFillFragment)
 //            SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMockTestFillFragment(navArgs.subjectName, test.name)
+            }
         }
     }
 
