@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.rcappstudios.qualityeducation.R
 import com.rcappstudios.qualityeducation.databinding.FragmentMockTestFillBinding
 import com.rcappstudios.qualityeducation.databinding.RowFillTestBinding
+import com.rcappstudios.qualityeducation.model.AttendersData
 import com.rcappstudios.qualityeducation.model.Field
 import com.rcappstudios.qualityeducation.model.StudentData
 import com.rcappstudios.qualityeducation.model.Test
@@ -24,6 +25,7 @@ class MockTestFillFragment : Fragment() {
 
     private lateinit var binding: FragmentMockTestFillBinding
     val navArgs: MockTestFillFragmentArgs by navArgs()
+    private var attenders = mutableListOf<AttendersData>()
     private var subject = ""
     private var testName = "test"
     private var test: Test? = null
@@ -67,27 +69,17 @@ class MockTestFillFragment : Fragment() {
                     }
                     FirebaseDatabase.getInstance().getReference("Students/" +
                             "${FirebaseAuth.getInstance().currentUser?.uid}").setValue(student)
-                    test?.attenders!![student?.name.toString()] = score
-                    updateTestAttenders()
+                    test?.attenders?.add(AttendersData(student?.name, score))
+//                    updateTestAttenders()
                 }
             }
-
-       /* if (student != null) {
-            Log.d("StudentSimulation", "updateStudentDB: ${student!!.name}")
-            student!!.testAttended = student!!.testAttended!! + 1
-            if (score > 0) {
-                student!!.score = student!!.score!! + score*10
-            }
-            FirebaseDatabase.getInstance().getReference(
-                "Students/" + "${FirebaseAuth.getInstance().currentUser?.uid}"
-            ).setValue(student)
-        }*/
     }
 
     private fun updateTestAttenders() {
+
         FirebaseDatabase.getInstance()
-            .getReference("Test/$subject/${test?.name}")
-            .setValue(test)
+            .getReference("Test/$subject/${test?.name}/attenders")
+            .setValue(attenders)
             .addOnSuccessListener {
                 Snackbar.make(binding.root, "Test Submitted", Snackbar.LENGTH_SHORT).show()
             }
@@ -95,6 +87,7 @@ class MockTestFillFragment : Fragment() {
                 Snackbar.make(binding.root, "Test Not Submitted", Snackbar.LENGTH_SHORT).show()
             }
     }
+
 
     private fun getScore(): Int {
         var point = 0
@@ -119,16 +112,6 @@ class MockTestFillFragment : Fragment() {
         FirebaseDatabase.getInstance().getReference("Test/$subject/${testName}").get()
             .addOnSuccessListener {
                 if (it.exists()) {
-/*
-                    Log.d("MYTAG", "openTest: ${it.childrenCount}")
-                    for (c in it.children) {
-                        Log.d("MYTAG", "onSuccess: ${c.value}")
-                        testFields.add(c.getValue(Field::class.java)!!)
-                    }
-                    if (testFields.isNotEmpty()) {
-                        addFields()
-                    }
-*/
                     val t = it.getValue(Test::class.java)
                     if (t != null) test = t
                     testFields = t?.fields!!

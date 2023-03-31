@@ -194,7 +194,9 @@ class MockTestCreateFragment : Fragment() {
     }
 
     private fun createTest(name: String, testFields: List<Field>, answers: Map<String, String>) {
-        val newTest = Test(name, testFields, FirebaseAuth.getInstance().currentUser?.uid, answers)
+        val newTest = Test(name, testFields, FirebaseAuth.getInstance().currentUser?.uid, answers,
+            mutableListOf()
+        )
         database.getReference("Test/$subject/${newTest.name}").setValue(newTest)
             .addOnSuccessListener {
                 //To close this fragment

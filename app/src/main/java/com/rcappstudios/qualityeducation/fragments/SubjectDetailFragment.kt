@@ -27,6 +27,7 @@ import com.google.mlkit.nl.translate.Translator
 import com.google.mlkit.nl.translate.TranslatorOptions
 import com.rajat.pdfviewer.PdfViewerActivity
 import com.rcappstudios.qualityeducation.R
+import com.rcappstudios.qualityeducation.StudentRoomActivity
 import com.rcappstudios.qualityeducation.adapters.AskQuestionsAdapter
 import com.rcappstudios.qualityeducation.adapters.MockTestAdapter
 import com.rcappstudios.qualityeducation.adapters.PDFAdapter
@@ -192,7 +193,11 @@ class SubjectDetailFragment : Fragment() {
         binding.rvPeers.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvPeers.adapter =
             PeerLearningAdapter(requireContext(), roomList, true){ int, room ->
-
+                val intent = Intent(requireContext(), StudentRoomActivity::class.java)
+                intent.putExtra("Subject", room.subject)
+                intent.putExtra("hostID",room.hostID )
+                intent.putExtra("RoomId", room.roomID)
+                startActivity(intent)
             }
     }
 

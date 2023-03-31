@@ -12,7 +12,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.rcappstudios.qualityeducation.adapters.SubjectAdapter
 import com.rcappstudios.qualityeducation.databinding.FragmentMockTestResultBinding
 
-class MockTestResultFragment: Fragment() {
+class MockTestResultFragment : Fragment() {
 
     private lateinit var binding: FragmentMockTestResultBinding
     private val navArgs: MockTestResultFragmentArgs by navArgs()
@@ -36,10 +36,9 @@ class MockTestResultFragment: Fragment() {
 
     private fun initRvAdapter() {
         binding.testResultRv.layoutManager = LinearLayoutManager(requireContext())
-        resultMap.observe(viewLifecycleOwner) {
-            subjectAdapter = SubjectAdapter(requireContext(), null, it, null)
-            binding.testResultRv.adapter = subjectAdapter
-        }
+        subjectAdapter = SubjectAdapter(requireContext(), null,
+            mapOf("Jones" to 65, "Hari" to 80, "James" to 35), null)
+        binding.testResultRv.adapter = subjectAdapter
     }
 
     private fun getTestResult() {

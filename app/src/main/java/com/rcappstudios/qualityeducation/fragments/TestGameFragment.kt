@@ -8,8 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.FirebaseDatabase
-import com.rcappstudios.qualityeducation.AttendTestActivity
-import com.rcappstudios.qualityeducation.R
+
 import com.rcappstudios.qualityeducation.adapters.ProblemAdapter
 import com.rcappstudios.qualityeducation.adapters.SubjectAdapter
 import com.rcappstudios.qualityeducation.databinding.FragmentTestGameBinding
