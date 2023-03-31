@@ -28,7 +28,7 @@ class SelectSubjectFragment : Fragment(), SubjectAdapter.SubjectClickListener {
     private lateinit var binding: FragmentSelectSubjectBinding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private lateinit var subjectAdapter: SubjectAdapter
-    private var subjectList: MutableList<String> = mutableListOf()
+    private lateinit var subjectList: MutableList<String>
 
     override fun onCreateView(
 
@@ -45,9 +45,9 @@ class SelectSubjectFragment : Fragment(), SubjectAdapter.SubjectClickListener {
         super.onViewCreated(view, savedInstanceState)
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheet.root)
         binding.subjectRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+        subjectList = mutableListOf()
         initSubjectRv()
         clickListener()
-        binding.subjectRv.visibility = View.GONE
     }
 
     private fun initSubjectRv() {
@@ -121,17 +121,17 @@ class SelectSubjectFragment : Fragment(), SubjectAdapter.SubjectClickListener {
         }
 
         binding.addClsFab.setOnClickListener{
-//            initBottomSheet()
+            initBottomSheet()
         }
 
         binding.bottomSheet.btnCreateRoom.setOnClickListener {
-//            extractDetails()
+            extractDetails()
         }
 
     }
 
     private fun setSubjectAdapter() {
-        subjectAdapter = SubjectAdapter(requireContext(), subjectList, this@SelectSubjectFragment)
+        subjectAdapter = SubjectAdapter(requireContext(), subjectList,null, this@SelectSubjectFragment)
         binding.subjectRv.adapter = subjectAdapter
     }
 

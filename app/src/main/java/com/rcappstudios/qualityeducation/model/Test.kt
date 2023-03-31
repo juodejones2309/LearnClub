@@ -4,5 +4,6 @@ data class Test(
     val name: String? = null,
     val fields: List<Field>? = null,
     val creator: String? = null,
-    val answers: Map<String, String>? = null
+    val answers: Map<String, String>? = null,
+    var attenders: MutableMap<String, Int>? = null
 )

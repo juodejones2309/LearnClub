@@ -48,7 +48,6 @@
 
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/audioSwitch"
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Audio"

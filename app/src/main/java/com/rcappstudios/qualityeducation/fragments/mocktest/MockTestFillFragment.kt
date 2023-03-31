@@ -10,6 +10,7 @@ import androidx.core.view.get
 import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.rcappstudios.qualityeducation.R
@@ -23,11 +24,13 @@ class MockTestFillFragment : Fragment() {
 
     private lateinit var binding: FragmentMockTestFillBinding
     val navArgs: MockTestFillFragmentArgs by navArgs()
-    private var subject = "Physics"
+    private var subject = ""
     private var testName = "test"
     private var test: Test? = null
     private var radioSelected: String = ""
     private var testFields: List<Field> = mutableListOf()
+    private var score: Int = 0
+    private var student: StudentData? = null
     private var llParams = LinearLayout.LayoutParams(
         LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
     )
@@ -53,7 +56,6 @@ class MockTestFillFragment : Fragment() {
     }
 
     private fun updateStudentDB(score: Int) {
-        var student: StudentData? = null
         FirebaseDatabase.getInstance().getReference(
             "Students/" + "${FirebaseAuth.getInstance().currentUser?.uid}"
         ).get().addOnSuccessListener {
@@ -65,6 +67,8 @@ class MockTestFillFragment : Fragment() {
                     }
                     FirebaseDatabase.getInstance().getReference("Students/" +
                             "${FirebaseAuth.getInstance().currentUser?.uid}").setValue(student)
+                    test?.attenders!![student?.name.toString()] = score
+                    updateTestAttenders()
                 }
             }
 
@@ -80,18 +84,33 @@ class MockTestFillFragment : Fragment() {
         }*/
     }
 
+    private fun updateTestAttenders() {
+        FirebaseDatabase.getInstance()
+            .getReference("Test/$subject/${test?.name}")
+            .setValue(test)
+            .addOnSuccessListener {
+                Snackbar.make(binding.root, "Test Submitted", Snackbar.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Snackbar.make(binding.root, "Test Not Submitted", Snackbar.LENGTH_SHORT).show()
+            }
+    }
+
     private fun getScore(): Int {
-        var score = 0
+        var point = 0
         for (i in 0 until binding.fillLinearLayout.size) {
             val v = binding.fillLinearLayout[i]
             val question = v.findViewById<TextView>(R.id.fill_test_fieldTV).text.toString().trim()
             val fillEt = v.findViewById<EditText>(R.id.fill_test_et)
             val radioGroup = v.findViewById<RadioGroup>(R.id.fill_test_rg)
             if (radioGroup.visibility == View.VISIBLE) {
-                if (test?.answers?.get(question)!! == radioSelected) score++
+                if (test?.answers?.get(question)!! == radioSelected) point++
             } else {
-                if (test?.answers?.get(question)!! == fillEt.text.toString().trim()) score++
+                if (test?.answers?.get(question)!! == fillEt.text.toString().trim()) point++
             }
+        }
+        if (point > 0) {
+            score = (point/binding.fillLinearLayout.size)*100
         }
         return score
     }

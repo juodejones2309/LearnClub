@@ -34,6 +34,7 @@ import com.rcappstudios.qualityeducation.databinding.FragmentSubjectDetailBindin
 import com.rcappstudios.qualityeducation.model.PdfModel
 import com.rcappstudios.qualityeducation.model.QuestionModel
 import com.rcappstudios.qualityeducation.model.RoomModel
+import com.rcappstudios.qualityeducation.model.Test
 import com.rcappstudios.qualityeducation.utils.Constants
 import com.rcappstudios.qualityeducation.utils.LoadingDialog
 import java.util.*
@@ -75,7 +76,6 @@ class SubjectDetailFragment : Fragment() {
         prepareTranslator()
         isMentor = requireActivity().getSharedPreferences(Constants.SHARED_PREF, MODE_PRIVATE)
             .getBoolean("isMentor", false)
-
 
 //        if(FirebaseAuth.getInstance().currentUser!!.uid != "r2z2HA4PMGYJIenwaMo9tZdSQFF2"){
 //            binding.createTest.visibility = View.GONE
@@ -139,9 +139,9 @@ class SubjectDetailFragment : Fragment() {
         FirebaseDatabase.getInstance().getReference("Test/${navArgs.subjectName.toString()}")
             .get().addOnSuccessListener {
                 if(it.exists()){
-                    val testList = mutableListOf<String>()
+                    val testList = mutableListOf<Test>()
                     for(c in it.children){
-                        testList.add(c.key.toString())
+                        testList.add(c.getValue(Test::class.java)!!)
                     }
                     initMockTestAdapter(testList)
                 }
@@ -149,10 +149,11 @@ class SubjectDetailFragment : Fragment() {
             }
     }
 
-    private fun initMockTestAdapter(testList: MutableList<String>){
+    private fun initMockTestAdapter(testList: MutableList<Test>){
         binding.mockTestRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.mockTestRecyclerView.adapter = MockTestAdapter(requireContext(),testList){int, test->
-            val directions = SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMockTestFillFragment(navArgs.subjectName, test)
+            val directions = SubjectDetailFragmentDirections
+                .actionSubjectDetailFragmentToMockTestFillFragment(navArgs.subjectName, test.name!!)
             switchToFragment(directions, R.id.mockTestFillFragment)
 //            SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMockTestFillFragment(navArgs.subjectName, test.name)
         }
@@ -177,7 +178,7 @@ class SubjectDetailFragment : Fragment() {
         binding.rvPeers.setHasFixedSize(true)
         binding.rvPeers.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvPeers.adapter =
-            PeerLearningAdapter(requireContext(), roomList, true){int, room->
+            PeerLearningAdapter(requireContext(), roomList, true){ int, room ->
 
             }
     }
