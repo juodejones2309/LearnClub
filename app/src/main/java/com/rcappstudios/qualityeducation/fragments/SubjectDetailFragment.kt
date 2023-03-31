@@ -154,7 +154,7 @@ class SubjectDetailFragment : Fragment() {
     private fun initMockTestAdapter(testList: MutableList<Test>){
         binding.mockTestRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.mockTestRecyclerView.adapter = MockTestAdapter(requireContext(),testList) { int, test ->
-            if (test.creator == FirebaseAuth.getInstance().uid) {
+            if (test.creator == FirebaseAuth.getInstance().currentUser?.uid) {
                 val directions =
                     SubjectDetailFragmentDirections.actionSubjectDetailFragmentToMockTestResultFragment(
                         navArgs.subjectName.toString(),

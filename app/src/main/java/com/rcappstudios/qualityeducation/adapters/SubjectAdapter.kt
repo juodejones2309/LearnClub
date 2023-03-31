@@ -1,21 +1,20 @@
 package com.rcappstudios.qualityeducation.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rcappstudios.qualityeducation.R
-import com.rcappstudios.qualityeducation.databinding.ItemStudentBinding
 import com.rcappstudios.qualityeducation.databinding.ItemSubjectBinding
-import com.rcappstudios.qualityeducation.model.InitStudentMessage
 
 class SubjectAdapter(
     private val context: Context,
     private var subjectList: MutableList<String>? = null,
     private var studentScore: Map<String, Int>? = null,
     private val onClick: SubjectClickListener?
-): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
@@ -26,7 +25,11 @@ class SubjectAdapter(
         return ViewHolder(binding.root)
     }
 
-    override fun getItemCount(): Int = subjectList?.size!!
+    override fun getItemCount(): Int = if (subjectList != null) {
+        subjectList?.size!!
+    } else {
+        0
+    }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (subjectList != null) {
@@ -34,7 +37,8 @@ class SubjectAdapter(
             binding.subjectTv.setOnClickListener {
                 onClick?.onSubjectClick(subjectList!![position])
             }
-        } else if (studentScore != null) {
+        } else {
+            Log.d("TAGData", "onBindViewHolder: $studentScore")
             val studentName = studentScore!!.keys.elementAt(position)
             val score = studentScore!![studentName]
             binding.subjectTv.text = studentName
@@ -51,7 +55,7 @@ class SubjectAdapter(
         notifyDataSetChanged()
     }
 
-    interface SubjectClickListener{
+    interface SubjectClickListener {
         fun onSubjectClick(subject: String)
     }
 }
