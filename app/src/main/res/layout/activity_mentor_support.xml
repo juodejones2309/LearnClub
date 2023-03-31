@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.mentors.MentorSupportActivity">
 
-
-
-
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"

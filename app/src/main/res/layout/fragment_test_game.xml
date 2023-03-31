@@ -5,11 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".fragments.TestGameFragment">
 
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/testNameRv"-->
+<!--        tools:listitem="@layout/item_subject"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="@string/hello_blank_fragment" />-->
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/testNameRv"
-        tools:listitem="@layout/item_subject"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:listitem="@layout/item_problem_statement"
+        android:id="@+id/problemRecyclerView" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

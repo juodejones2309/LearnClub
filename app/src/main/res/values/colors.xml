@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gpt_green">#00A67E</color>
     <color name="gpt_grey">#3F3D3D</color>
-
+    <color name="red">#FF0000</color>
     <color name="pink">#EF1F61</color>
     <color name="pinkFaded">#1AEF1F61</color>
 </resources>

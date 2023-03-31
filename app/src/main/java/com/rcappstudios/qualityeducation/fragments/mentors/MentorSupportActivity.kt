@@ -48,8 +48,7 @@ class MentorSupportActivity : AppCompatActivity() {
         }
 
         setupBottomNavigation()
-        binding.bottomBar.visibility = View.GONE
-        binding.bottomBar.setItemSelected(R.id.roomChat)
+        binding.bottomBar.setItemSelected(R.id.roomWhiteBoard)
     }
 
     private fun setupBottomNavigation(){

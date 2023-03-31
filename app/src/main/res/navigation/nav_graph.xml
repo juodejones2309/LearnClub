@@ -91,6 +91,9 @@
         <action
             android:id="@+id/action_subjectDetailFragment_to_askDoubtFragment"
             app:destination="@id/askDoubtFragment" />
+        <action
+            android:id="@+id/action_subjectDetailFragment_to_mockTestResultFragment"
+            app:destination="@id/mockTestResultFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatGptFragment"
@@ -136,4 +139,15 @@
         android:name="com.rcappstudios.qualityeducation.fragments.TestGameFragment"
         android:label="fragment_test_game"
         tools:layout="@layout/fragment_test_game" />
+    <fragment
+        android:id="@+id/mockTestResultFragment"
+        android:name="com.rcappstudios.qualityeducation.fragments.mocktest.MockTestResultFragment"
+        android:label="MockTestResultFragment" >
+        <argument
+            android:name="subjectName"
+            app:argType="string" />
+        <argument
+            android:name="testName"
+            app:argType="string" />
+    </fragment>
 </navigation>
