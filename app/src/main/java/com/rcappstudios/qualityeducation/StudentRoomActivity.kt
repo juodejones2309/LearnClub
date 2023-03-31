@@ -36,7 +36,7 @@ class StudentRoomActivity : AppCompatActivity() {
     )
     private val appId = "a9c7eed08a8a4e4bba648e6e6e879163"
     private val channelName = "1"
-    private val token = "007eJxTYNj0muOd6ZyKHYpZXMl3/snNlyuavn9pYHHitufhWx+vjjdXYEi0TDZPTU0xsEi0SDRJNUlKSjQzsUg1A0ILc0tDM2NeQ9WUhkBGhtO3DBgYoRDEZ2QwZGAAAD0zHow="
+    private val token = "007eJxTYEi1OFierO7pdcKH4f28o4c8l2bOfpQQW2TBfeVJSMqK9GMKDImWyeapqSkGFokWiSapJklJiWYmFqlmQGhhbmloZjyrUS2lIZCRYRpfHQMjFIL4jAyGDAwA7/cdvA=="
     private val uid = 0
     private var isJoined = false
     private var agoraEngine: RtcEngine? = null
